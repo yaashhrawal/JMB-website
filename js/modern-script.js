@@ -1,69 +1,10 @@
 // Modern JMB Udaipur Website - Professional E-commerce JavaScript
 // Inspired by premium brands like Haldiram's, Bikaji, and Bombay Sweet Shop
 
-// Sample product data for featured products
-const featuredProducts = [
-    {
-        id: 1,
-        name: "Premium Kaju Katli",
-        description: "Traditional cashew sweet made with pure ghee and finest cashews",
-        price: 899,
-        originalPrice: 999,
-        image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400",
-        badge: "Bestseller",
-        category: "sweets"
-    },
-    {
-        id: 2,
-        name: "Royal Ghewar",
-        description: "Authentic Rajasthani delicacy with malai and dry fruits",
-        price: 749,
-        originalPrice: 849,
-        image: "https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?w=400",
-        badge: "Traditional",
-        category: "sweets"
-    },
-    {
-        id: 3,
-        name: "Special Bhujia Mix",
-        description: "Crispy namkeen mixture with authentic spices and nuts",
-        price: 299,
-        originalPrice: 349,
-        image: "https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?w=400",
-        badge: "Hot Seller",
-        category: "namkeen"
-    },
-    {
-        id: 4,
-        name: "Assorted Mithai Box",
-        description: "Premium collection of 6 different traditional sweets",
-        price: 1299,
-        originalPrice: 1499,
-        image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400",
-        badge: "Gift Pack",
-        category: "sweets"
-    },
-    {
-        id: 5,
-        name: "Fresh Chocolate Barfi",
-        description: "Rich chocolate barfi made with premium cocoa and milk",
-        price: 649,
-        originalPrice: 749,
-        image: "https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?w=400",
-        badge: "New",
-        category: "sweets"
-    },
-    {
-        id: 6,
-        name: "Deluxe Gift Hamper",
-        description: "Curated selection of sweets and namkeen for special occasions",
-        price: 1899,
-        originalPrice: 2199,
-        image: "https://images.unsplash.com/photo-1607478900766-efe13248b125?w=400",
-        badge: "Premium",
-        category: "gifts"
-    }
-];
+// Global variables for products and cart
+let allProducts = [];
+let featuredProducts = [];
+let productCategories = [];
 
 // Shopping cart functionality
 let cart = JSON.parse(localStorage.getItem('jmb-cart')) || [];
@@ -71,7 +12,7 @@ let cart = JSON.parse(localStorage.getItem('jmb-cart')) || [];
 // Initialize the website
 document.addEventListener('DOMContentLoaded', function() {
     initializeWebsite();
-    loadFeaturedProducts();
+    loadProductData();
     updateCartCount();
     initializeScrollEffects();
     initializeSearch();
@@ -128,6 +69,72 @@ function initializeWebsite() {
     });
 }
 
+// Load products from JSON file
+async function loadProductData() {
+    try {
+        const response = await fetch('data/products.json');
+        const data = await response.json();
+        
+        allProducts = data.products;
+        featuredProducts = data.products.filter(product => product.is_featured);
+        productCategories = data.categories;
+        
+        loadFeaturedProducts();
+        console.log('Products loaded successfully:', featuredProducts.length, 'featured products');
+    } catch (error) {
+        console.error('Error loading products:', error);
+        // Fallback to sample data if JSON fails
+        loadSampleProducts();
+    }
+}
+
+// Fallback sample products
+function loadSampleProducts() {
+    featuredProducts = [
+        {
+            id: 1,
+            name: "Premium Ghewar",
+            description: "Traditional Rajasthani sweet disc soaked in sugar syrup",
+            price: 850,
+            image: "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=400",
+            is_premium: true,
+            category: "sweets",
+            default_weight: "1kg"
+        },
+        {
+            id: 2,
+            name: "Royal Kaju Katli",
+            description: "Diamond-shaped cashew fudge with edible silver leaf",
+            price: 1200,
+            image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400",
+            is_premium: true,
+            category: "sweets",
+            default_weight: "500g"
+        },
+        {
+            id: 3,
+            name: "Special Namkeen Mix",
+            description: "Crunchy blend of sev, peanuts, and traditional spices",
+            price: 450,
+            image: "https://images.unsplash.com/photo-1599490659213-e2b9527bd087?w=400",
+            is_premium: false,
+            category: "namkeen",
+            default_weight: "1kg"
+        },
+        {
+            id: 6,
+            name: "Diwali Gift Hamper",
+            description: "Curated collection of premium sweets and dry fruits",
+            price: 2500,
+            image: "https://images.unsplash.com/photo-1607478900766-efe13248b125?w=400",
+            is_premium: true,
+            category: "gift-hampers",
+            default_weight: "2.5kg"
+        }
+    ];
+    loadFeaturedProducts();
+}
+
 // Load featured products
 function loadFeaturedProducts() {
     const container = document.getElementById('featuredProducts');
@@ -146,23 +153,50 @@ function createProductCard(product) {
     const card = document.createElement('div');
     card.className = 'product-card';
     
-    const discount = Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100);
+    // Calculate discount if originalPrice exists
+    let discountHtml = '';
+    if (product.originalPrice && product.originalPrice > product.price) {
+        const discount = Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100);
+        discountHtml = `
+            <span style="text-decoration: line-through; color: var(--text-light); font-size: 1rem; margin-left: 8px;">₹${product.originalPrice.toLocaleString()}</span>
+            <span style="color: #27AE60; font-size: 0.9rem; margin-left: 8px;">(${discount}% off)</span>
+        `;
+    }
+
+    // Determine badge text
+    const badge = product.badge || (product.is_premium ? 'Premium' : 'Popular');
+    
+    // Weight selection HTML
+    const weightOptions = product.weight_options || ['500g', '1kg'];
+    const defaultWeight = product.default_weight || weightOptions[0];
+    
+    const weightSelectHtml = weightOptions.length > 1 ? `
+        <div class="weight-selector">
+            <label for="weight-${product.id}">Weight:</label>
+            <select id="weight-${product.id}" class="weight-select">
+                ${weightOptions.map(weight => 
+                    `<option value="${weight}" ${weight === defaultWeight ? 'selected' : ''}>${weight}</option>`
+                ).join('')}
+            </select>
+        </div>
+    ` : `<div class="product-weight">Weight: ${defaultWeight}</div>`;
     
     card.innerHTML = `
         <div class="product-image">
-            <img src="${product.image}" alt="${product.name}" loading="lazy">
-            <div class="product-badge">${product.badge}</div>
+            <img src="${product.image}" alt="${product.name}" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400'">
+            <div class="product-badge">${badge}</div>
+            ${product.rating ? `<div class="product-rating"><i class="fas fa-star"></i> ${product.rating}</div>` : ''}
         </div>
         <div class="product-info">
             <h3 class="product-title">${product.name}</h3>
             <p class="product-description">${product.description}</p>
+            ${weightSelectHtml}
             <div class="product-price">
                 ₹${product.price.toLocaleString()}
-                ${product.originalPrice > product.price ? `<span style="text-decoration: line-through; color: var(--text-light); font-size: 1rem; margin-left: 8px;">₹${product.originalPrice.toLocaleString()}</span>` : ''}
-                ${discount > 0 ? `<span style="color: #27AE60; font-size: 0.9rem; margin-left: 8px;">(${discount}% off)</span>` : ''}
+                ${discountHtml}
             </div>
             <div class="product-actions">
-                <button class="btn btn-outline" onclick="addToWishlist(${product.id})">
+                <button class="btn btn-outline" onclick="addToWishlist(${product.id})" title="Add to Wishlist">
                     <i class="fas fa-heart"></i>
                 </button>
                 <button class="btn btn-primary" onclick="addToCart(${product.id})">
@@ -177,41 +211,55 @@ function createProductCard(product) {
 
 // Shopping cart functionality
 function addToCart(productId) {
-    const product = featuredProducts.find(p => p.id === productId);
-    if (!product) return;
+    // Find product in all products first, then featured products as fallback
+    let product = allProducts.find(p => p.id === productId) || featuredProducts.find(p => p.id === productId);
+    if (!product) {
+        showNotification('Product not found!', 'error');
+        return;
+    }
 
-    const existingItem = cart.find(item => item.id === productId);
+    // Get selected weight
+    const weightSelect = document.getElementById(`weight-${productId}`);
+    const selectedWeight = weightSelect ? weightSelect.value : (product.default_weight || '1kg');
+    
+    // Create unique item key for different weights
+    const itemKey = `${productId}-${selectedWeight}`;
+    const existingItem = cart.find(item => item.itemKey === itemKey);
     
     if (existingItem) {
         existingItem.quantity += 1;
+        showNotification(`${product.name} (${selectedWeight}) quantity updated!`, 'success');
     } else {
         cart.push({
             ...product,
+            itemKey: itemKey,
+            selectedWeight: selectedWeight,
             quantity: 1
         });
+        showNotification(`${product.name} (${selectedWeight}) added to cart!`, 'success');
     }
 
     localStorage.setItem('jmb-cart', JSON.stringify(cart));
     updateCartCount();
     updateCartDisplay();
-    showNotification(`${product.name} added to cart!`, 'success');
 }
 
-function removeFromCart(productId) {
-    cart = cart.filter(item => item.id !== productId);
+function removeFromCart(itemKey) {
+    cart = cart.filter(item => item.itemKey !== itemKey);
     localStorage.setItem('jmb-cart', JSON.stringify(cart));
     updateCartCount();
     updateCartDisplay();
+    showNotification('Item removed from cart', 'info');
 }
 
-function updateQuantity(productId, change) {
-    const item = cart.find(item => item.id === productId);
+function updateQuantity(itemKey, change) {
+    const item = cart.find(item => item.itemKey === itemKey);
     if (!item) return;
 
     item.quantity += change;
     
     if (item.quantity <= 0) {
-        removeFromCart(productId);
+        removeFromCart(itemKey);
     } else {
         localStorage.setItem('jmb-cart', JSON.stringify(cart));
         updateCartDisplay();
@@ -235,7 +283,13 @@ function updateCartDisplay() {
     if (!cartItems || !cartTotal) return;
 
     if (cart.length === 0) {
-        cartItems.innerHTML = '<div style="text-align: center; padding: 40px 0; color: var(--text-medium);">Your cart is empty</div>';
+        cartItems.innerHTML = `
+            <div style="text-align: center; padding: 40px 20px; color: var(--text-medium);">
+                <i class="fas fa-shopping-cart" style="font-size: 48px; margin-bottom: 16px; opacity: 0.5;"></i>
+                <p>Your cart is empty</p>
+                <p style="font-size: 14px;">Add some delicious items to get started!</p>
+            </div>
+        `;
         cartTotal.textContent = '₹0';
         return;
     }
@@ -251,17 +305,22 @@ function updateCartDisplay() {
         cartItem.className = 'cart-item';
         cartItem.innerHTML = `
             <div class="cart-item-image">
-                <img src="${item.image}" alt="${item.name}">
+                <img src="${item.image}" alt="${item.name}" onerror="this.src='https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400'">
             </div>
             <div class="cart-item-details">
                 <div class="cart-item-title">${item.name}</div>
-                <div class="cart-item-price">₹${item.price.toLocaleString()}</div>
+                <div class="cart-item-weight">${item.selectedWeight}</div>
+                <div class="cart-item-price">₹${item.price.toLocaleString()} each</div>
                 <div class="cart-item-quantity">
-                    <button class="quantity-btn" onclick="updateQuantity(${item.id}, -1)">-</button>
+                    <button class="quantity-btn" onclick="updateQuantity('${item.itemKey}', -1)" title="Decrease quantity">-</button>
                     <span>${item.quantity}</span>
-                    <button class="quantity-btn" onclick="updateQuantity(${item.id}, 1)">+</button>
+                    <button class="quantity-btn" onclick="updateQuantity('${item.itemKey}', 1)" title="Increase quantity">+</button>
                 </div>
+                <div class="cart-item-total">Total: ₹${itemTotal.toLocaleString()}</div>
             </div>
+            <button class="cart-item-remove" onclick="removeFromCart('${item.itemKey}')" title="Remove item">
+                <i class="fas fa-times"></i>
+            </button>
         `;
         cartItems.appendChild(cartItem);
     });
@@ -287,8 +346,11 @@ function toggleCart() {
 
 // Wishlist functionality
 function addToWishlist(productId) {
-    const product = featuredProducts.find(p => p.id === productId);
-    if (!product) return;
+    const product = allProducts.find(p => p.id === productId) || featuredProducts.find(p => p.id === productId);
+    if (!product) {
+        showNotification('Product not found!', 'error');
+        return;
+    }
 
     let wishlist = JSON.parse(localStorage.getItem('jmb-wishlist')) || [];
     
@@ -296,9 +358,41 @@ function addToWishlist(productId) {
         wishlist.push(product);
         localStorage.setItem('jmb-wishlist', JSON.stringify(wishlist));
         showNotification(`${product.name} added to wishlist!`, 'success');
+        
+        // Update heart icon to filled
+        const heartBtn = event.target.closest('button');
+        if (heartBtn) {
+            heartBtn.innerHTML = '<i class="fas fa-heart" style="color: #e74c3c;"></i>';
+            heartBtn.title = 'Remove from Wishlist';
+            heartBtn.onclick = () => removeFromWishlist(productId);
+        }
     } else {
         showNotification(`${product.name} is already in wishlist!`, 'info');
     }
+}
+
+function removeFromWishlist(productId) {
+    let wishlist = JSON.parse(localStorage.getItem('jmb-wishlist')) || [];
+    wishlist = wishlist.filter(item => item.id !== productId);
+    localStorage.setItem('jmb-wishlist', JSON.stringify(wishlist));
+    
+    const product = allProducts.find(p => p.id === productId) || featuredProducts.find(p => p.id === productId);
+    if (product) {
+        showNotification(`${product.name} removed from wishlist`, 'info');
+    }
+    
+    // Update heart icon to empty
+    const heartBtn = event.target.closest('button');
+    if (heartBtn) {
+        heartBtn.innerHTML = '<i class="fas fa-heart"></i>';
+        heartBtn.title = 'Add to Wishlist';
+        heartBtn.onclick = () => addToWishlist(productId);
+    }
+}
+
+function getWishlistCount() {
+    const wishlist = JSON.parse(localStorage.getItem('jmb-wishlist')) || [];
+    return wishlist.length;
 }
 
 // Notification system
@@ -385,19 +479,71 @@ function initializeSearch() {
 }
 
 function performSearch(query) {
-    if (!query) return;
+    if (!query) {
+        loadFeaturedProducts(); // Reset to featured products
+        return;
+    }
 
-    // Simulate search functionality
-    const results = featuredProducts.filter(product => 
+    // Search in all products
+    const searchProducts = allProducts.length > 0 ? allProducts : featuredProducts;
+    const results = searchProducts.filter(product => 
         product.name.toLowerCase().includes(query.toLowerCase()) ||
         product.description.toLowerCase().includes(query.toLowerCase()) ||
-        product.category.toLowerCase().includes(query.toLowerCase())
+        product.category.toLowerCase().includes(query.toLowerCase()) ||
+        (product.name_hindi && product.name_hindi.includes(query)) ||
+        (product.ingredients && product.ingredients.some(ingredient => 
+            ingredient.toLowerCase().includes(query.toLowerCase())
+        ))
     );
 
-    if (results.length > 0) {
-        showNotification(`Found ${results.length} product(s) matching "${query}"`, 'success');
-    } else {
+    displaySearchResults(results, query);
+}
+
+function displaySearchResults(results, query) {
+    const container = document.getElementById('featuredProducts');
+    if (!container) return;
+
+    container.innerHTML = '';
+
+    if (results.length === 0) {
+        container.innerHTML = `
+            <div style="grid-column: 1 / -1; text-align: center; padding: 40px; color: var(--text-medium);">
+                <i class="fas fa-search" style="font-size: 48px; margin-bottom: 16px; opacity: 0.5;"></i>
+                <h3>No products found for "${query}"</h3>
+                <p>Try searching with different keywords or browse our categories</p>
+                <button class="btn btn-primary" onclick="clearSearch()">View All Products</button>
+            </div>
+        `;
         showNotification(`No products found for "${query}"`, 'info');
+        return;
+    }
+
+    results.forEach(product => {
+        const productCard = createProductCard(product);
+        container.appendChild(productCard);
+    });
+
+    showNotification(`Found ${results.length} product(s) matching "${query}"`, 'success');
+
+    // Update section header
+    const sectionHeader = document.querySelector('.featured-products .section-header h2');
+    if (sectionHeader) {
+        sectionHeader.textContent = `Search Results for "${query}" (${results.length} items)`;
+    }
+}
+
+function clearSearch() {
+    const searchInput = document.getElementById('searchInput');
+    if (searchInput) {
+        searchInput.value = '';
+    }
+    
+    loadFeaturedProducts();
+    
+    // Reset section header
+    const sectionHeader = document.querySelector('.featured-products .section-header h2');
+    if (sectionHeader) {
+        sectionHeader.textContent = 'Featured Products';
     }
 }
 
@@ -405,14 +551,56 @@ function performSearch(query) {
 function initializeMobileMenu() {
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
     const navLinks = document.querySelector('.nav-links');
+    const navOverlay = createMobileMenuOverlay();
     
     if (mobileMenuBtn && navLinks) {
         mobileMenuBtn.addEventListener('click', function() {
             this.classList.toggle('active');
             navLinks.classList.toggle('active');
+            navOverlay.classList.toggle('active');
             document.body.classList.toggle('menu-open');
         });
+        
+        // Close menu when clicking on overlay
+        navOverlay.addEventListener('click', function() {
+            mobileMenuBtn.classList.remove('active');
+            navLinks.classList.remove('active');
+            navOverlay.classList.remove('active');
+            document.body.classList.remove('menu-open');
+        });
+        
+        // Close menu when clicking on nav links
+        navLinks.addEventListener('click', function(e) {
+            if (e.target.tagName === 'A') {
+                mobileMenuBtn.classList.remove('active');
+                navLinks.classList.remove('active');
+                navOverlay.classList.remove('active');
+                document.body.classList.remove('menu-open');
+            }
+        });
     }
+}
+
+function createMobileMenuOverlay() {
+    let overlay = document.querySelector('.mobile-menu-overlay');
+    if (!overlay) {
+        overlay = document.createElement('div');
+        overlay.className = 'mobile-menu-overlay';
+        overlay.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        `;
+        document.body.appendChild(overlay);
+    }
+    return overlay;
 }
 
 // Newsletter subscription
@@ -421,8 +609,26 @@ function subscribeNewsletter(event) {
     const email = event.target.querySelector('input[type="email"]').value;
     
     if (email) {
-        showNotification('Thank you for subscribing to our newsletter!', 'success');
-        event.target.reset();
+        // Basic email validation
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            showNotification('Please enter a valid email address', 'error');
+            return;
+        }
+        
+        // Store newsletter subscription (in real app, this would go to server)
+        let subscribers = JSON.parse(localStorage.getItem('jmb-newsletter')) || [];
+        
+        if (subscribers.includes(email)) {
+            showNotification('You are already subscribed to our newsletter!', 'info');
+        } else {
+            subscribers.push(email);
+            localStorage.setItem('jmb-newsletter', JSON.stringify(subscribers));
+            showNotification('Thank you for subscribing to our newsletter!', 'success');
+            event.target.reset();
+        }
+    } else {
+        showNotification('Please enter your email address', 'error');
     }
 }
 
@@ -433,21 +639,75 @@ function orderViaWhatsApp() {
         return;
     }
 
-    let message = 'Hello! I would like to order:\n\n';
-    let total = 0;
+    // Get current date and time
+    const now = new Date();
+    const orderDate = now.toLocaleDateString('en-IN');
+    const orderTime = now.toLocaleTimeString('en-IN');
+    
+    // Build detailed order message
+    let message = `🍯 *JMB Udaipur - New Order Request*\n\n`;
+    message += `📅 Date: ${orderDate}\n`;
+    message += `🕐 Time: ${orderTime}\n\n`;
+    message += `📦 *Order Details:*\n`;
+    message += `${'='.repeat(30)}\n\n`;
 
-    cart.forEach(item => {
+    let total = 0;
+    let itemCount = 0;
+
+    cart.forEach((item, index) => {
         const itemTotal = item.price * item.quantity;
         total += itemTotal;
-        message += `• ${item.name} x${item.quantity} - ₹${itemTotal.toLocaleString()}\n`;
+        itemCount += item.quantity;
+        
+        message += `${index + 1}. *${item.name}*\n`;
+        message += `   📏 Weight: ${item.selectedWeight}\n`;
+        message += `   💰 Price: ₹${item.price.toLocaleString()} per unit\n`;
+        message += `   🔢 Quantity: ${item.quantity}\n`;
+        message += `   💵 Subtotal: ₹${itemTotal.toLocaleString()}\n\n`;
     });
 
-    message += `\nTotal: ₹${total.toLocaleString()}\n\nPlease confirm availability and delivery details.`;
+    message += `${'='.repeat(30)}\n`;
+    message += `📊 *Order Summary:*\n`;
+    message += `🛒 Total Items: ${itemCount}\n`;
+    message += `💰 *Grand Total: ₹${total.toLocaleString()}*\n\n`;
+    
+    message += `📍 *Delivery Information Needed:*\n`;
+    message += `• Full Name\n`;
+    message += `• Complete Address\n`;
+    message += `• Phone Number\n`;
+    message += `• Preferred Delivery Time\n\n`;
+    
+    message += `💳 *Payment Options:*\n`;
+    message += `• Cash on Delivery\n`;
+    message += `• UPI Payment\n`;
+    message += `• Card Payment\n\n`;
+    
+    message += `📝 *Special Instructions:*\n`;
+    message += `(Please mention any special requirements)\n\n`;
+    
+    message += `✨ Thank you for choosing JMB Udaipur!\n`;
+    message += `🚚 We will confirm your order and delivery details shortly.`;
 
-    const phoneNumber = '919429412345'; // Replace with actual WhatsApp number
+    // JMB Udaipur WhatsApp number (replace with actual number)
+    const phoneNumber = '919429412345';
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     
+    // Open WhatsApp
     window.open(whatsappUrl, '_blank');
+    
+    // Show success message
+    showNotification('Redirecting to WhatsApp for order confirmation...', 'success');
+    
+    // Optional: Clear cart after successful order initiation
+    setTimeout(() => {
+        if (confirm('Order sent to WhatsApp! Would you like to clear your cart?')) {
+            cart = [];
+            localStorage.setItem('jmb-cart', JSON.stringify(cart));
+            updateCartCount();
+            updateCartDisplay();
+            toggleCart(); // Close cart sidebar
+        }
+    }, 2000);
 }
 
 // Checkout functionality
@@ -457,10 +717,10 @@ function proceedToCheckout() {
         return;
     }
 
-    showNotification('Redirecting to checkout...', 'info');
-    // Here you would typically redirect to a checkout page
+    // For now, redirect to WhatsApp ordering
+    showNotification('Proceeding with WhatsApp checkout...', 'info');
     setTimeout(() => {
-        alert('Checkout functionality would be implemented here with payment gateway integration.');
+        orderViaWhatsApp();
     }, 1000);
 }
 
