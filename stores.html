@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Stores - JMB Udaipur | Find Store Locations Near You</title>
+    <meta name="description" content="Visit JMB Udaipur stores across the city. Find store locations, timings, and contact details for all our outlets.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/modern-style.css">
+    <link rel="stylesheet" href="css/stores-style.css">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Leaflet CSS for Maps -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body>
+    <!-- Header (same as other pages) -->
+    <header class="header">
+        <div class="top-bar">
+            <div class="container">
+                <div class="top-bar-content">
+                    <div class="contact-info">
+                        <span><i class="fas fa-phone"></i> +91 294 241 2345</span>
+                        <span><i class="fas fa-envelope"></i> orders@jmbudaipur.com</span>
+                    </div>
+                    <div class="top-links">
+                        <a href="#track-order">Track Order</a>
+                        <a href="stores.html">Store Locator</a>
+                        <a href="#help">Help</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <nav class="main-nav">
+            <div class="container">
+                <div class="nav-content">
+                    <div class="logo">
+                        <a href="index.html">
+                            <div class="text-logo">
+                                <h1>JMB Udaipur</h1>
+                                <span class="tagline">Since 1960s</span>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <div class="nav-links">
+                        <a href="index.html" class="nav-link">Home</a>
+                        <a href="index.html#products" class="nav-link">Products</a>
+                        <a href="about.html" class="nav-link">About Us</a>
+                        <a href="stores.html" class="nav-link active">Our Stores</a>
+                        <a href="contact.html" class="nav-link">Contact</a>
+                    </div>
+                    
+                    <div class="nav-actions">
+                        <button class="account-btn"><i class="fas fa-user"></i></button>
+                        <button class="cart-btn" onclick="toggleCart()">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="cart-count" id="cartCount">0</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Page Hero -->
+    <section class="page-hero" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1567529692333-de9fd6772897?w=1200') center/cover;">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Our Store Locations</h1>
+                <p>Find JMB Udaipur stores near you</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Store Locator Section -->
+    <section class="store-locator-section">
+        <div class="container">
+            <div class="store-locator-header">
+                <h2>Find a Store Near You</h2>
+                <div class="search-container">
+                    <input type="text" id="storeSearch" placeholder="Enter city, area, or pincode" class="store-search">
+                    <button class="btn btn-primary" onclick="searchStores()">
+                        <i class="fas fa-search"></i> Search
+                    </button>
+                </div>
+            </div>
+
+            <div class="store-layout">
+                <div class="stores-list">
+                    <h3>All Store Locations</h3>
+                    <div class="store-cards" id="storeCards">
+                        <!-- Store 1 -->
+                        <div class="store-card" data-store-id="1">
+                            <div class="store-header">
+                                <h4>JMB City Palace Road</h4>
+                                <span class="store-badge flagship">Flagship Store</span>
+                            </div>
+                            <div class="store-details">
+                                <div class="store-info">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>Near City Palace Main Gate, City Palace Road, Udaipur, Rajasthan 313001</span>
+                                </div>
+                                <div class="store-info">
+                                    <i class="fas fa-clock"></i>
+                                    <span>Mon-Sat: 9:00 AM - 9:00 PM<br>Sunday: 10:00 AM - 8:00 PM</span>
+                                </div>
+                                <div class="store-info">
+                                    <i class="fas fa-phone"></i>
+                                    <span>+91 294 241 2345</span>
+                                </div>
+                            </div>
+                            <div class="store-actions">
+                                <button class="btn btn-outline" onclick="showOnMap(24.5854, 73.6857, 1)">
+                                    <i class="fas fa-map"></i> View on Map
+                                </button>
+                                <button class="btn btn-outline" onclick="getDirections(24.5854, 73.6857)">
+                                    <i class="fas fa-directions"></i> Get Directions
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Store 2 -->
+                        <div class="store-card" data-store-id="2">
+                            <div class="store-header">
+                                <h4>JMB Hathi Pole</h4>
+                                <span class="store-badge">City Store</span>
+                            </div>
+                            <div class="store-details">
+                                <div class="store-info">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>Hathi Pole Bazaar, Near Clock Tower, Udaipur, Rajasthan 313001</span>
+                                </div>
+                                <div class="store-info">
+                                    <i class="fas fa-clock"></i>
+                                    <span>Mon-Sat: 10:00 AM - 8:00 PM<br>Sunday: 11:00 AM - 7:00 PM</span>
+                                </div>
+                                <div class="store-info">
+                                    <i class="fas fa-phone"></i>
+                                    <span>+91 294 241 3456</span>
+                                </div>
+                            </div>
+                            <div class="store-actions">
+                                <button class="btn btn-outline" onclick="showOnMap(24.5796, 73.6836, 2)">
+                                    <i class="fas fa-map"></i> View on Map
+                                </button>
+                                <button class="btn btn-outline" onclick="getDirections(24.5796, 73.6836)">
+                                    <i class="fas fa-directions"></i> Get Directions
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Store 3 -->
+                        <div class="store-card" data-store-id="3">
+                            <div class="store-header">
+                                <h4>JMB Celebration Mall</h4>
+                                <span class="store-badge">Mall Store</span>
+                            </div>
+                            <div class="store-details">
+                                <div class="store-info">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>Celebration Mall, Bhuwana Bypass Rd, Udaipur, Rajasthan 313001</span>
+                                </div>
+                                <div class="store-info">
+                                    <i class="fas fa-clock"></i>
+                                    <span>Mon-Sun: 11:00 AM - 10:00 PM</span>
+                                </div>
+                                <div class="store-info">
+                                    <i class="fas fa-phone"></i>
+                                    <span>+91 294 241 4567</span>
+                                </div>
+                            </div>
+                            <div class="store-actions">
+                                <button class="btn btn-outline" onclick="showOnMap(24.5991, 73.7339, 3)">
+                                    <i class="fas fa-map"></i> View on Map
+                                </button>
+                                <button class="btn btn-outline" onclick="getDirections(24.5991, 73.7339)">
+                                    <i class="fas fa-directions"></i> Get Directions
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Store 4 -->
+                        <div class="store-card" data-store-id="4">
+                            <div class="store-header">
+                                <h4>JMB Fatehpura</h4>
+                                <span class="store-badge">Express Store</span>
+                            </div>
+                            <div class="store-details">
+                                <div class="store-info">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>Fatehpura Circle, Near Saheliyon Ki Bari, Udaipur, Rajasthan 313001</span>
+                                </div>
+                                <div class="store-info">
+                                    <i class="fas fa-clock"></i>
+                                    <span>Mon-Sat: 9:30 AM - 8:30 PM<br>Sunday: 10:00 AM - 7:00 PM</span>
+                                </div>
+                                <div class="store-info">
+                                    <i class="fas fa-phone"></i>
+                                    <span>+91 294 241 5678</span>
+                                </div>
+                            </div>
+                            <div class="store-actions">
+                                <button class="btn btn-outline" onclick="showOnMap(24.6052, 73.6889, 4)">
+                                    <i class="fas fa-map"></i> View on Map
+                                </button>
+                                <button class="btn btn-outline" onclick="getDirections(24.6052, 73.6889)">
+                                    <i class="fas fa-directions"></i> Get Directions
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Store 5 -->
+                        <div class="store-card" data-store-id="5">
+                            <div class="store-header">
+                                <h4>JMB Airport Road</h4>
+                                <span class="store-badge new">New Store</span>
+                            </div>
+                            <div class="store-details">
+                                <div class="store-info">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>Airport Road, Near Maharana Pratap Airport, Udaipur, Rajasthan 313001</span>
+                                </div>
+                                <div class="store-info">
+                                    <i class="fas fa-clock"></i>
+                                    <span>Mon-Sun: 8:00 AM - 10:00 PM</span>
+                                </div>
+                                <div class="store-info">
+                                    <i class="fas fa-phone"></i>
+                                    <span>+91 294 241 6789</span>
+                                </div>
+                            </div>
+                            <div class="store-actions">
+                                <button class="btn btn-outline" onclick="showOnMap(24.6177, 73.8961, 5)">
+                                    <i class="fas fa-map"></i> View on Map
+                                </button>
+                                <button class="btn btn-outline" onclick="getDirections(24.6177, 73.8961)">
+                                    <i class="fas fa-directions"></i> Get Directions
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="map-container">
+                    <div id="storeMap"></div>
+                    <div class="map-legend">
+                        <h4>Legend</h4>
+                        <div class="legend-item">
+                            <span class="legend-icon flagship"></span>
+                            <span>Flagship Store</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-icon regular"></span>
+                            <span>Regular Store</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-icon new"></span>
+                            <span>New Store</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Store Features -->
+    <section class="store-features">
+        <div class="container">
+            <h2>Available at All Stores</h2>
+            <div class="features-grid">
+                <div class="feature">
+                    <i class="fas fa-shopping-bag"></i>
+                    <h3>Fresh Products Daily</h3>
+                    <p>All our sweets and namkeen are made fresh daily</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-gift"></i>
+                    <h3>Gift Wrapping</h3>
+                    <p>Complimentary gift wrapping for all purchases</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-truck"></i>
+                    <h3>Home Delivery</h3>
+                    <p>Free home delivery for orders above ₹999</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-percentage"></i>
+                    <h3>Bulk Discounts</h3>
+                    <p>Special prices for bulk and corporate orders</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <h3>JMB Udaipur</h3>
+                        <p class="tagline">Celebrating 60+ Years of Sweet Traditions</p>
+                    </div>
+                    <p>From the royal city of Udaipur, we've been crafting premium traditional sweets and confectionery with authentic recipes passed down through generations.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="index.html#products">Products</a></li>
+                        <li><a href="stores.html">Our Stores</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Customer Care</h4>
+                    <ul>
+                        <li><a href="#help">Help Center</a></li>
+                        <li><a href="#track">Track Your Order</a></li>
+                        <li><a href="#returns">Returns & Refunds</a></li>
+                        <li><a href="#shipping">Shipping Info</a></li>
+                        <li><a href="#bulk">Bulk Orders</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>City Palace Road, Udaipur<br>Rajasthan 313001</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+91 294 241 2345</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>orders@jmbudaipur.com</span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2024 JMB Udaipur. All Rights Reserved.</p>
+                    <div class="footer-links">
+                        <a href="#privacy">Privacy Policy</a>
+                        <a href="#terms">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Shopping Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>Shopping Cart</h3>
+            <button class="cart-close" onclick="toggleCart()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-items" id="cartItems"></div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total: <strong id="cartTotal">₹0</strong></span>
+            </div>
+            <button class="btn btn-primary btn-block" onclick="proceedToCheckout()">
+                Proceed to Checkout
+            </button>
+            <button class="btn btn-whatsapp btn-block" onclick="orderViaWhatsApp()">
+                <i class="fab fa-whatsapp"></i> Order via WhatsApp
+            </button>
+        </div>
+    </div>
+
+    <!-- Cart Overlay -->
+    <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="js/modern-script.js"></script>
+    <script src="js/stores.js"></script>
+</body>
+</html>

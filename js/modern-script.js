@@ -76,62 +76,138 @@ async function loadProductData() {
         const data = await response.json();
         
         allProducts = data.products;
-        featuredProducts = data.products.filter(product => product.is_featured);
+        featuredProducts = data.products.filter(product => product.is_featured).slice(0, 8);
         productCategories = data.categories;
         
         loadFeaturedProducts();
         console.log('Products loaded successfully:', featuredProducts.length, 'featured products');
     } catch (error) {
-        console.error('Error loading products:', error);
-        // Fallback to sample data if JSON fails
+        console.error('Error loading products, using sample data:', error);
+        // Always load sample products for now to ensure functionality
         loadSampleProducts();
     }
 }
 
+// Sample products data
+const sampleProducts = [
+    {
+        id: 1,
+        name: "Premium Ghewar",
+        description: "Traditional Rajasthani sweet disc soaked in sugar syrup, topped with rabri and dry fruits",
+        price: 850,
+        originalPrice: 999,
+        image: "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=400",
+        is_premium: true,
+        category: "sweets",
+        default_weight: "1kg",
+        weight_options: ["500g", "1kg", "2kg"],
+        rating: 4.8,
+        badge: "Bestseller"
+    },
+    {
+        id: 2,
+        name: "Royal Kaju Katli",
+        description: "Diamond-shaped cashew fudge with edible silver leaf, made with pure ghee",
+        price: 1200,
+        originalPrice: 1399,
+        image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400",
+        is_premium: true,
+        category: "sweets",
+        default_weight: "500g",
+        weight_options: ["250g", "500g", "1kg"],
+        rating: 4.9,
+        badge: "Premium"
+    },
+    {
+        id: 3,
+        name: "Special Namkeen Mix",
+        description: "Crunchy blend of sev, peanuts, and traditional spices - perfect tea-time snack",
+        price: 450,
+        originalPrice: 549,
+        image: "https://images.unsplash.com/photo-1599490659213-e2b9527bd087?w=400",
+        is_premium: false,
+        category: "namkeen",
+        default_weight: "1kg",
+        weight_options: ["500g", "1kg", "2kg"],
+        rating: 4.6,
+        badge: "Popular"
+    },
+    {
+        id: 4,
+        name: "Gulab Jamun",
+        description: "Soft milk solid balls soaked in rose-flavored sugar syrup with cardamom",
+        price: 600,
+        originalPrice: 749,
+        image: "https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?w=400",
+        is_premium: false,
+        category: "sweets",
+        default_weight: "1kg",
+        weight_options: ["500g", "1kg"],
+        rating: 4.7,
+        badge: "Traditional"
+    },
+    {
+        id: 5,
+        name: "Chocolate Burfi",
+        description: "Modern twist on traditional burfi with rich Belgian chocolate",
+        price: 750,
+        originalPrice: 899,
+        image: "https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?w=400",
+        is_premium: true,
+        category: "sweets",
+        default_weight: "500g",
+        weight_options: ["250g", "500g", "1kg"],
+        rating: 4.5,
+        badge: "New"
+    },
+    {
+        id: 6,
+        name: "Diwali Gift Hamper",
+        description: "Curated collection of premium sweets, dry fruits and namkeen for festive gifting",
+        price: 2500,
+        originalPrice: 2999,
+        image: "https://images.unsplash.com/photo-1607478900766-efe13248b125?w=400",
+        is_premium: true,
+        category: "gift-hampers",
+        default_weight: "2.5kg",
+        weight_options: ["2.5kg", "3.5kg", "5kg"],
+        rating: 4.9,
+        badge: "Premium Gift"
+    },
+    {
+        id: 7,
+        name: "Mathri",
+        description: "Crispy, flaky traditional snack made with ghee and aromatic spices",
+        price: 380,
+        originalPrice: 449,
+        image: "https://images.unsplash.com/photo-1601050690597-df0568f70950?w=400",
+        is_premium: false,
+        category: "namkeen",
+        default_weight: "500g",
+        weight_options: ["500g", "1kg"],
+        rating: 4.4,
+        badge: "Crispy"
+    },
+    {
+        id: 8,
+        name: "Rasgulla",
+        description: "Soft, spongy cottage cheese balls in light sugar syrup",
+        price: 550,
+        originalPrice: 649,
+        image: "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=400",
+        is_premium: false,
+        category: "sweets",
+        default_weight: "1kg",
+        weight_options: ["500g", "1kg"],
+        rating: 4.3,
+        badge: "Bengali Special"
+    }
+];
+
 // Fallback sample products
 function loadSampleProducts() {
-    featuredProducts = [
-        {
-            id: 1,
-            name: "Premium Ghewar",
-            description: "Traditional Rajasthani sweet disc soaked in sugar syrup",
-            price: 850,
-            image: "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=400",
-            is_premium: true,
-            category: "sweets",
-            default_weight: "1kg"
-        },
-        {
-            id: 2,
-            name: "Royal Kaju Katli",
-            description: "Diamond-shaped cashew fudge with edible silver leaf",
-            price: 1200,
-            image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400",
-            is_premium: true,
-            category: "sweets",
-            default_weight: "500g"
-        },
-        {
-            id: 3,
-            name: "Special Namkeen Mix",
-            description: "Crunchy blend of sev, peanuts, and traditional spices",
-            price: 450,
-            image: "https://images.unsplash.com/photo-1599490659213-e2b9527bd087?w=400",
-            is_premium: false,
-            category: "namkeen",
-            default_weight: "1kg"
-        },
-        {
-            id: 6,
-            name: "Diwali Gift Hamper",
-            description: "Curated collection of premium sweets and dry fruits",
-            price: 2500,
-            image: "https://images.unsplash.com/photo-1607478900766-efe13248b125?w=400",
-            is_premium: true,
-            category: "gift-hampers",
-            default_weight: "2.5kg"
-        }
-    ];
+    featuredProducts = sampleProducts;
+    allProducts = sampleProducts;
     loadFeaturedProducts();
 }
 
@@ -717,11 +793,213 @@ function proceedToCheckout() {
         return;
     }
 
-    // For now, redirect to WhatsApp ordering
-    showNotification('Proceeding with WhatsApp checkout...', 'info');
-    setTimeout(() => {
-        orderViaWhatsApp();
-    }, 1000);
+    showCheckoutOptions();
+}
+
+// Show checkout options modal
+function showCheckoutOptions() {
+    const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    const orderId = 'JMB' + Date.now();
+    
+    const modal = document.createElement('div');
+    modal.className = 'checkout-modal';
+    modal.innerHTML = `
+        <div class="checkout-modal-content">
+            <div class="checkout-header">
+                <h3>Choose Payment Method</h3>
+                <button class="checkout-close" onclick="closeCheckoutModal()">&times;</button>
+            </div>
+            <div class="checkout-body">
+                <div class="order-summary">
+                    <h4>Order Summary</h4>
+                    <div class="summary-items">
+                        ${cart.map(item => `
+                            <div class="summary-item">
+                                <span>${item.name} (${item.selectedWeight}) x${item.quantity}</span>
+                                <span>₹${(item.price * item.quantity).toLocaleString()}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                    <div class="summary-total">
+                        <strong>Total: ₹${total.toLocaleString()}</strong>
+                    </div>
+                </div>
+                
+                <div class="payment-methods">
+                    <h4>Select Payment Method</h4>
+                    
+                    <button class="payment-method-btn upi-btn" onclick="proceedWithUPI('${orderId}', ${total})">
+                        <div class="payment-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <div class="payment-details">
+                            <strong>UPI Payment</strong>
+                            <p>Pay using any UPI app - Quick & Secure</p>
+                        </div>
+                        <div class="payment-badge">Recommended</div>
+                    </button>
+                    
+                    <button class="payment-method-btn whatsapp-btn" onclick="orderViaWhatsApp()">
+                        <div class="payment-icon">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <div class="payment-details">
+                            <strong>WhatsApp Order</strong>
+                            <p>Order via WhatsApp - Cash on Delivery</p>
+                        </div>
+                    </button>
+                    
+                    <button class="payment-method-btn cod-btn" onclick="proceedWithCOD('${orderId}')">
+                        <div class="payment-icon">
+                            <i class="fas fa-money-bill-wave"></i>
+                        </div>
+                        <div class="payment-details">
+                            <strong>Cash on Delivery</strong>
+                            <p>Pay when you receive your order</p>
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    document.body.appendChild(modal);
+    setTimeout(() => modal.classList.add('show'), 100);
+}
+
+// Proceed with UPI payment
+function proceedWithUPI(orderId, amount) {
+    closeCheckoutModal();
+    
+    // Use the UPI payment function from contact.js
+    if (typeof processUPIPayment === 'function') {
+        processUPIPayment(amount, orderId);
+    } else {
+        // Fallback if contact.js is not loaded
+        const upiLink = `upi://pay?pa=JMB@upi&pn=JMB%20Udaipur&am=${amount}&cu=INR&tn=JMB%20Order%20${orderId}`;
+        
+        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+            window.location.href = upiLink;
+            setTimeout(() => {
+                const confirmed = confirm('Payment completed? Click OK if payment was successful.');
+                if (confirmed) {
+                    showNotification('Payment successful! Your order has been confirmed.', 'success');
+                    clearCart();
+                }
+            }, 5000);
+        } else {
+            showNotification('Please use a mobile device for UPI payment or choose WhatsApp order.', 'info');
+        }
+    }
+}
+
+// Proceed with Cash on Delivery
+function proceedWithCOD(orderId) {
+    closeCheckoutModal();
+    
+    const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    
+    // Show COD confirmation form
+    const modal = document.createElement('div');
+    modal.className = 'cod-modal';
+    modal.innerHTML = `
+        <div class="cod-modal-content">
+            <div class="cod-header">
+                <h3>Cash on Delivery Order</h3>
+                <button class="cod-close" onclick="closeCODModal()">&times;</button>
+            </div>
+            <div class="cod-body">
+                <form onsubmit="submitCODOrder(event, '${orderId}', ${total})">
+                    <div class="form-group">
+                        <label>Full Name *</label>
+                        <input type="text" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number *</label>
+                        <input type="tel" name="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Complete Address *</label>
+                        <textarea name="address" rows="3" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Preferred Delivery Time</label>
+                        <select name="deliveryTime">
+                            <option value="morning">Morning (9 AM - 12 PM)</option>
+                            <option value="afternoon">Afternoon (12 PM - 4 PM)</option>
+                            <option value="evening">Evening (4 PM - 8 PM)</option>
+                        </select>
+                    </div>
+                    <div class="cod-total">
+                        <strong>Total Amount: ₹${total.toLocaleString()}</strong>
+                        <p><small>+ Delivery charges if applicable</small></p>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">
+                        Confirm COD Order
+                    </button>
+                </form>
+            </div>
+        </div>
+    `;
+    
+    document.body.appendChild(modal);
+    setTimeout(() => modal.classList.add('show'), 100);
+}
+
+// Submit COD order
+function submitCODOrder(event, orderId, total) {
+    event.preventDefault();
+    
+    const formData = new FormData(event.target);
+    const orderData = {
+        orderId: orderId,
+        total: total,
+        items: cart,
+        customer: {
+            name: formData.get('name'),
+            phone: formData.get('phone'),
+            address: formData.get('address'),
+            deliveryTime: formData.get('deliveryTime')
+        },
+        paymentMethod: 'COD',
+        timestamp: new Date().toISOString()
+    };
+    
+    // Store order (in real app, send to server)
+    const orders = JSON.parse(localStorage.getItem('jmb-orders')) || [];
+    orders.push(orderData);
+    localStorage.setItem('jmb-orders', JSON.stringify(orders));
+    
+    closeCODModal();
+    showNotification('Order confirmed! We will call you to confirm delivery details.', 'success');
+    clearCart();
+}
+
+// Clear cart
+function clearCart() {
+    cart = [];
+    localStorage.setItem('jmb-cart', JSON.stringify(cart));
+    updateCartCount();
+    updateCartDisplay();
+    toggleCart();
+}
+
+// Close checkout modal
+function closeCheckoutModal() {
+    const modal = document.querySelector('.checkout-modal');
+    if (modal) {
+        modal.classList.remove('show');
+        setTimeout(() => modal.remove(), 300);
+    }
+}
+
+// Close COD modal
+function closeCODModal() {
+    const modal = document.querySelector('.cod-modal');
+    if (modal) {
+        modal.classList.remove('show');
+        setTimeout(() => modal.remove(), 300);
+    }
 }
 
 // Scroll effects and animations

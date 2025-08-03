@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JMB Test - Check Functions</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        .status { 
+            padding: 5px 10px; 
+            border-radius: 4px; 
+            display: inline-block;
+            margin: 5px 0;
+        }
+        .success { background: #d4edda; color: #155724; }
+        .error { background: #f8d7da; color: #721c24; }
+        .info { background: #d1ecf1; color: #0c5460; }
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+            border: none;
+            border-radius: 4px;
+            background: #ff6b35;
+            color: white;
+        }
+        button:hover {
+            background: #e55a2b;
+        }
+    </style>
+</head>
+<body>
+    <h1>JMB Udaipur - Function Test Page</h1>
+    
+    <div class="test-section">
+        <h2>1. Products Loading Test</h2>
+        <button onclick="testProductLoading()">Test Product Loading</button>
+        <div id="product-test-result"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>2. Cart Functions Test</h2>
+        <button onclick="testCartFunctions()">Test Cart</button>
+        <div id="cart-test-result"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>3. Check Local Storage</h2>
+        <button onclick="checkLocalStorage()">Check Storage</button>
+        <div id="storage-result"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>4. Direct Product Display</h2>
+        <button onclick="displaySampleProducts()">Show Sample Products</button>
+        <div id="sample-products" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 20px;"></div>
+    </div>
+
+    <script>
+        // Test product loading
+        async function testProductLoading() {
+            const resultDiv = document.getElementById('product-test-result');
+            resultDiv.innerHTML = '<div class="status info">Testing product loading...</div>';
+            
+            try {
+                const response = await fetch('data/products.json');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const data = await response.json();
+                
+                resultDiv.innerHTML = `
+                    <div class="status success">✓ Products loaded successfully!</div>
+                    <div class="status info">Total products: ${data.products.length}</div>
+                    <div class="status info">Featured products: ${data.products.filter(p => p.is_featured).length}</div>
+                `;
+                
+                // Display first 3 products
+                const productList = data.products.slice(0, 3).map(p => 
+                    `<li>${p.name} - ₹${p.price}</li>`
+                ).join('');
+                resultDiv.innerHTML += `<ul>${productList}</ul>`;
+                
+            } catch (error) {
+                resultDiv.innerHTML = `<div class="status error">✗ Error loading products: ${error.message}</div>`;
+            }
+        }
+
+        // Test cart functions
+        function testCartFunctions() {
+            const resultDiv = document.getElementById('cart-test-result');
+            
+            // Test cart initialization
+            let cart = JSON.parse(localStorage.getItem('jmb-cart')) || [];
+            
+            // Add test item
+            const testItem = {
+                id: 1,
+                name: "Test Product",
+                price: 100,
+                quantity: 1,
+                selectedWeight: "1kg",
+                itemKey: "1-1kg"
+            };
+            
+            cart.push(testItem);
+            localStorage.setItem('jmb-cart', JSON.stringify(cart));
+            
+            resultDiv.innerHTML = `
+                <div class="status success">✓ Cart functions working!</div>
+                <div class="status info">Cart items: ${cart.length}</div>
+                <div class="status info">Test item added: ${testItem.name}</div>
+            `;
+        }
+
+        // Check local storage
+        function checkLocalStorage() {
+            const resultDiv = document.getElementById('storage-result');
+            
+            const cart = JSON.parse(localStorage.getItem('jmb-cart')) || [];
+            const wishlist = JSON.parse(localStorage.getItem('jmb-wishlist')) || [];
+            
+            resultDiv.innerHTML = `
+                <div class="status info">Cart items: ${cart.length}</div>
+                <div class="status info">Wishlist items: ${wishlist.length}</div>
+                <div class="status ${localStorage.getItem('jmb-cart') ? 'success' : 'error'}">
+                    Cart storage: ${localStorage.getItem('jmb-cart') ? 'Active' : 'Empty'}
+                </div>
+            `;
+        }
+
+        // Display sample products directly
+        function displaySampleProducts() {
+            const container = document.getElementById('sample-products');
+            
+            const sampleProducts = [
+                {
+                    name: "Premium Ghewar",
+                    price: 850,
+                    image: "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=400",
+                    description: "Traditional Rajasthani sweet"
+                },
+                {
+                    name: "Royal Kaju Katli",
+                    price: 1200,
+                    image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400",
+                    description: "Premium cashew sweet"
+                },
+                {
+                    name: "Special Namkeen Mix",
+                    price: 450,
+                    image: "https://images.unsplash.com/photo-1599490659213-e2b9527bd087?w=400",
+                    description: "Crispy snack mixture"
+                }
+            ];
+
+            container.innerHTML = sampleProducts.map(product => `
+                <div style="border: 1px solid #ddd; padding: 15px; border-radius: 8px;">
+                    <img src="${product.image}" alt="${product.name}" style="width: 100%; height: 200px; object-fit: cover; border-radius: 4px;">
+                    <h3>${product.name}</h3>
+                    <p>${product.description}</p>
+                    <p style="font-size: 20px; color: #ff6b35; font-weight: bold;">₹${product.price}</p>
+                    <button onclick="alert('Add to cart clicked for ${product.name}')">Add to Cart</button>
+                </div>
+            `).join('');
+        }
+
+        // Auto-run tests on load
+        window.onload = function() {
+            console.log('Test page loaded successfully!');
+        }
+    </script>
+</body>
+</html>

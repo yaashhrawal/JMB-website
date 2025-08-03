@@ -1,0 +1,312 @@
+/* Stores Page Styles */
+
+/* Store Locator Section */
+.store-locator-section {
+    padding: 80px 0;
+    background: var(--white);
+}
+
+.store-locator-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.store-locator-header h2 {
+    font-size: 2.5rem;
+    margin-bottom: 24px;
+}
+
+.search-container {
+    display: flex;
+    gap: 16px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.store-search {
+    flex: 1;
+    padding: 14px 20px;
+    border: 2px solid var(--border-light);
+    border-radius: var(--radius-medium);
+    font-size: 16px;
+    transition: var(--transition-fast);
+}
+
+.store-search:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+/* Store Layout */
+.store-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 40px;
+}
+
+.stores-list h3 {
+    margin-bottom: 24px;
+    font-size: 1.5rem;
+}
+
+.store-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    max-height: 800px;
+    overflow-y: auto;
+    padding-right: 16px;
+}
+
+/* Store Card */
+.store-card {
+    background: var(--white);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-large);
+    padding: 24px;
+    transition: var(--transition-medium);
+    cursor: pointer;
+}
+
+.store-card:hover {
+    box-shadow: var(--shadow-medium);
+    transform: translateY(-2px);
+}
+
+.store-card.active {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+}
+
+.store-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.store-header h4 {
+    font-size: 1.25rem;
+    margin: 0;
+}
+
+.store-badge {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.store-badge.flagship {
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    color: #8B4513;
+}
+
+.store-badge.new {
+    background: #27AE60;
+    color: white;
+}
+
+.store-badge {
+    background: var(--primary-color);
+    color: white;
+}
+
+.store-details {
+    margin-bottom: 20px;
+}
+
+.store-info {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 12px;
+    color: var(--text-medium);
+    font-size: 14px;
+}
+
+.store-info i {
+    color: var(--primary-color);
+    width: 16px;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.store-actions {
+    display: flex;
+    gap: 12px;
+}
+
+.store-actions .btn {
+    flex: 1;
+    padding: 10px 16px;
+    font-size: 14px;
+}
+
+/* Map Container */
+.map-container {
+    position: relative;
+}
+
+#storeMap {
+    height: 800px;
+    border-radius: var(--radius-large);
+    border: 1px solid var(--border-light);
+    box-shadow: var(--shadow-light);
+}
+
+.map-legend {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background: white;
+    padding: 16px;
+    border-radius: var(--radius-medium);
+    box-shadow: var(--shadow-medium);
+}
+
+.map-legend h4 {
+    margin-bottom: 12px;
+    font-size: 14px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.legend-icon {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+.legend-icon.flagship {
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+}
+
+.legend-icon.regular {
+    background: var(--primary-color);
+}
+
+.legend-icon.new {
+    background: #27AE60;
+}
+
+/* Store Features */
+.store-features {
+    padding: 80px 0;
+    background: var(--light-gray);
+}
+
+.store-features h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 48px;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+}
+
+.feature {
+    text-align: center;
+}
+
+.feature i {
+    font-size: 48px;
+    color: var(--primary-color);
+    margin-bottom: 16px;
+}
+
+.feature h3 {
+    font-size: 1.25rem;
+    margin-bottom: 8px;
+}
+
+.feature p {
+    color: var(--text-medium);
+}
+
+/* Custom Leaflet Styles */
+.leaflet-popup-content {
+    font-family: 'Inter', sans-serif;
+}
+
+.popup-content h4 {
+    margin-bottom: 8px;
+    color: var(--text-dark);
+}
+
+.popup-content p {
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: var(--text-medium);
+}
+
+.popup-content .btn {
+    margin-top: 12px;
+}
+
+/* Scrollbar Styling */
+.store-cards::-webkit-scrollbar {
+    width: 8px;
+}
+
+.store-cards::-webkit-scrollbar-track {
+    background: var(--light-gray);
+    border-radius: 4px;
+}
+
+.store-cards::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 4px;
+}
+
+.store-cards::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-dark);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .store-layout {
+        grid-template-columns: 1fr;
+    }
+    
+    #storeMap {
+        height: 500px;
+        margin-top: 40px;
+    }
+    
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .search-container {
+        flex-direction: column;
+    }
+    
+    .store-actions {
+        flex-direction: column;
+    }
+    
+    .features-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+    
+    .map-legend {
+        bottom: 10px;
+        right: 10px;
+        padding: 12px;
+    }
+}
