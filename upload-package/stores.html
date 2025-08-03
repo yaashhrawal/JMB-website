@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Stores - JMB Udaipur | Find Store Locations</title>
+    <meta name="description" content="Visit JMB Udaipur stores across the city. Find store locations, timings, and contact details for all our outlets.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #FF6B35;
+            --primary-light: #FF8A65;
+            --primary-dark: #E55A2B;
+            --accent: #F39C12;
+            --dark: #2C3E50;
+            --light: #F8F9FA;
+            --white: #FFFFFF;
+            --text: #2C3E50;
+            --text-light: #6C757D;
+            --border: #E9ECEF;
+            --shadow: 0 4px 20px rgba(0,0,0,0.08);
+            --shadow-hover: 0 8px 30px rgba(0,0,0,0.12);
+            --gradient: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--white);
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: var(--transition);
+            border-bottom: 1px solid rgba(233,236,239,0.5);
+        }
+        
+        .nav {
+            padding: 16px 0;
+        }
+        
+        .nav-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .logo:hover {
+            transform: scale(1.05);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+        
+        .nav-link {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            transition: var(--transition);
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+        
+        .nav-link.active {
+            color: var(--primary);
+        }
+        
+        /* Page Header */
+        .page-header {
+            margin-top: 80px;
+            padding: 80px 0;
+            background: var(--gradient);
+            color: var(--white);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="50" cy="10" r="0.5" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+        
+        .page-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .page-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Main Content */
+        .main-content {
+            padding: 80px 0;
+        }
+        
+        .section {
+            margin-bottom: 80px;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--text);
+            margin-bottom: 16px;
+        }
+        
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Store Grid */
+        .stores-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .store-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid var(--border);
+        }
+        
+        .store-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .store-header {
+            background: var(--gradient);
+            color: var(--white);
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .store-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+        }
+        
+        .store-icon i {
+            font-size: 1.5rem;
+            color: var(--white);
+        }
+        
+        .store-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+        }
+        
+        .store-area {
+            opacity: 0.9;
+            font-size: 1rem;
+        }
+        
+        .store-body {
+            padding: 30px;
+        }
+        
+        .store-info {
+            margin-bottom: 20px;
+        }
+        
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        
+        .info-icon {
+            width: 20px;
+            height: 20px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+        
+        .info-icon i {
+            font-size: 0.7rem;
+            color: var(--white);
+        }
+        
+        .info-text {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+        
+        .store-actions {
+            display: flex;
+            gap: 12px;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 20px;
+            border-radius: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 0.9rem;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            color: var(--white);
+            flex: 1;
+            justify-content: center;
+        }
+        
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            flex: 1;
+            justify-content: center;
+        }
+        
+        .btn-outline:hover {
+            background: var(--primary);
+            color: var(--white);
+        }
+        
+        /* Map Section */
+        .map-section {
+            background: var(--light);
+            padding: 80px 0;
+            border-radius: 24px;
+            margin: 80px 0;
+        }
+        
+        .map-container {
+            background: var(--white);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            font-size: 1.2rem;
+        }
+        
+        /* Store Hours */
+        .hours-section {
+            background: var(--dark);
+            color: var(--white);
+            padding: 60px 0;
+            border-radius: 24px;
+            text-align: center;
+        }
+        
+        .hours-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .hours-card {
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .hours-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 16px;
+            color: var(--primary);
+        }
+        
+        .hours-list {
+            list-style: none;
+        }
+        
+        .hours-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .hours-list li:last-child {
+            border-bottom: none;
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--dark);
+            color: var(--white);
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-section h4 {
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+        
+        .footer-section p,
+        .footer-section a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: var(--transition);
+            line-height: 1.8;
+        }
+        
+        .footer-section a:hover {
+            color: var(--primary);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.2);
+            padding-top: 30px;
+            text-align: center;
+            color: rgba(255,255,255,0.6);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .stores-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .store-actions {
+                flex-direction: column;
+            }
+            
+            .hours-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Page Transition */
+        .page-transition {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease-out;
+        }
+        
+        .page-transition.loaded {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="container">
+                <div class="nav-content">
+                    <a href="index.html" class="logo">JMB Udaipur</a>
+                    <ul class="nav-links">
+                        <li><a href="index.html" class="nav-link">Home</a></li>
+                        <li><a href="about.html" class="nav-link">About Us</a></li>
+                        <li><a href="stores.html" class="nav-link active">Our Stores</a></li>
+                        <li><a href="contact.html" class="nav-link">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="page-transition">
+        <section class="page-header">
+            <div class="container">
+                <h1>Our Store Locations</h1>
+                <p>Visit our premium outlets across Udaipur for the freshest sweets and authentic Rajasthani flavors</p>
+            </div>
+        </section>
+
+        <main class="main-content">
+            <div class="container">
+                <!-- Stores Section -->
+                <section class="section">
+                    <div class="section-header">
+                        <h2 class="section-title">Visit Our Stores</h2>
+                        <p class="section-subtitle">Experience the authentic taste of JMB Udaipur at our conveniently located outlets</p>
+                    </div>
+                    
+                    <div class="stores-grid">
+                        <div class="store-card">
+                            <div class="store-header">
+                                <div class="store-icon">
+                                    <i class="fas fa-store"></i>
+                                </div>
+                                <h3 class="store-name">City Palace Store</h3>
+                                <p class="store-area">Main Branch</p>
+                            </div>
+                            <div class="store-body">
+                                <div class="store-info">
+                                    <div class="info-item">
+                                        <div class="info-icon">
+                                            <i class="fas fa-map-marker-alt"></i>
+                                        </div>
+                                        <div class="info-text">
+                                            Shop No. 15, City Palace Road<br>
+                                            Near Clock Tower, Udaipur<br>
+                                            Rajasthan 313001
+                                        </div>
+                                    </div>
+                                    <div class="info-item">
+                                        <div class="info-icon">
+                                            <i class="fas fa-clock"></i>
+                                        </div>
+                                        <div class="info-text">
+                                            Open Daily: 9:00 AM - 9:00 PM<br>
+                                            Sunday: 10:00 AM - 8:00 PM
+                                        </div>
+                                    </div>
+                                    <div class="info-item">
+                                        <div class="info-icon">
+                                            <i class="fas fa-phone"></i>
+                                        </div>
+                                        <div class="info-text">+91 294 241 2345</div>
+                                    </div>
+                                </div>
+                                <div class="store-actions">
+                                    <button class="btn btn-primary">
+                                        <i class="fas fa-directions"></i> Get Directions
+                                    </button>
+                                    <button class="btn btn-outline">
+                                        <i class="fas fa-phone"></i> Call Store
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="store-card">
+                            <div class="store-header">
+                                <div class="store-icon">
+                                    <i class="fas fa-store"></i>
+                                </div>
+                                <h3 class="store-name">Fateh Sagar Store</h3>
+                                <p class="store-area">Lake View Branch</p>
+                            </div>
+                            <div class="store-body">
+                                <div class="store-info">
+                                    <div class="info-item">
+                                        <div class="info-icon">
+                                            <i class="fas fa-map-marker-alt"></i>
+                                        </div>
+                                        <div class="info-text">
+                                            12-A, Fateh Sagar Circle<br>
+                                            Near Moti Magri, Udaipur<br>
+                                            Rajasthan 313001
+                                        </div>
+                                    </div>
+                                    <div class="info-item">
+                                        <div class="info-icon">
+                                            <i class="fas fa-clock"></i>
+                                        </div>
+                                        <div class="info-text">
+                                            Open Daily: 9:30 AM - 8:30 PM<br>
+                                            Sunday: 10:00 AM - 8:00 PM
+                                        </div>
+                                    </div>
+                                    <div class="info-item">
+                                        <div class="info-icon">
+                                            <i class="fas fa-phone"></i>
+                                        </div>
+                                        <div class="info-text">+91 294 241 2346</div>
+                                    </div>
+                                </div>
+                                <div class="store-actions">
+                                    <button class="btn btn-primary">
+                                        <i class="fas fa-directions"></i> Get Directions
+                                    </button>
+                                    <button class="btn btn-outline">
+                                        <i class="fas fa-phone"></i> Call Store
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="store-card">
+                            <div class="store-header">
+                                <div class="store-icon">
+                                    <i class="fas fa-store"></i>
+                                </div>
+                                <h3 class="store-name">Sukhadia Circle Store</h3>
+                                <p class="store-area">Premium Outlet</p>
+                            </div>
+                            <div class="store-body">
+                                <div class="store-info">
+                                    <div class="info-item">
+                                        <div class="info-icon">
+                                            <i class="fas fa-map-marker-alt"></i>
+                                        </div>
+                                        <div class="info-text">
+                                            3rd Floor, Celebration Mall<br>
+                                            Sukhadia Circle, Udaipur<br>
+                                            Rajasthan 313001
+                                        </div>
+                                    </div>
+                                    <div class="info-item">
+                                        <div class="info-icon">
+                                            <i class="fas fa-clock"></i>
+                                        </div>
+                                        <div class="info-text">
+                                            Open Daily: 10:00 AM - 10:00 PM<br>
+                                            All Days Open
+                                        </div>
+                                    </div>
+                                    <div class="info-item">
+                                        <div class="info-icon">
+                                            <i class="fas fa-phone"></i>
+                                        </div>
+                                        <div class="info-text">+91 294 241 2347</div>
+                                    </div>
+                                </div>
+                                <div class="store-actions">
+                                    <button class="btn btn-primary">
+                                        <i class="fas fa-directions"></i> Get Directions
+                                    </button>
+                                    <button class="btn btn-outline">
+                                        <i class="fas fa-phone"></i> Call Store
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="store-card">
+                            <div class="store-header">
+                                <div class="store-icon">
+                                    <i class="fas fa-store"></i>
+                                </div>
+                                <h3 class="store-name">Sector 14 Store</h3>
+                                <p class="store-area">Residential Area</p>
+                            </div>
+                            <div class="store-body">
+                                <div class="store-info">
+                                    <div class="info-item">
+                                        <div class="info-icon">
+                                            <i class="fas fa-map-marker-alt"></i>
+                                        </div>
+                                        <div class="info-text">
+                                            Shop 7-8, Sector 14<br>
+                                            Hiran Magri, Udaipur<br>
+                                            Rajasthan 313002
+                                        </div>
+                                    </div>
+                                    <div class="info-item">
+                                        <div class="info-icon">
+                                            <i class="fas fa-clock"></i>
+                                        </div>
+                                        <div class="info-text">
+                                            Open Daily: 9:00 AM - 9:00 PM<br>
+                                            Sunday: 9:30 AM - 8:30 PM
+                                        </div>
+                                    </div>
+                                    <div class="info-item">
+                                        <div class="info-icon">
+                                            <i class="fas fa-phone"></i>
+                                        </div>
+                                        <div class="info-text">+91 294 241 2348</div>
+                                    </div>
+                                </div>
+                                <div class="store-actions">
+                                    <button class="btn btn-primary">
+                                        <i class="fas fa-directions"></i> Get Directions
+                                    </button>
+                                    <button class="btn btn-outline">
+                                        <i class="fas fa-phone"></i> Call Store
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Map Section -->
+                <section class="map-section">
+                    <div class="container">
+                        <div class="section-header">
+                            <h2 class="section-title">Find Us on Map</h2>
+                            <p class="section-subtitle">Locate all our stores across Udaipur for your convenience</p>
+                        </div>
+                        <div class="map-container">
+                            <div style="text-align: center;">
+                                <i class="fas fa-map-marked-alt" style="font-size: 3rem; color: var(--primary); margin-bottom: 16px;"></i>
+                                <p>Interactive Map Coming Soon</p>
+                                <p style="font-size: 0.9rem; margin-top: 8px;">Use "Get Directions" buttons above for navigation</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Store Hours -->
+                <section class="hours-section">
+                    <div class="container">
+                        <h2 style="font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 16px;">Store Hours</h2>
+                        <p style="opacity: 0.9; margin-bottom: 40px;">We're open 7 days a week to serve you fresh sweets and snacks</p>
+                        
+                        <div class="hours-grid">
+                            <div class="hours-card">
+                                <h3 class="hours-title">Weekdays</h3>
+                                <ul class="hours-list">
+                                    <li><span>Monday</span><span>9:00 AM - 9:00 PM</span></li>
+                                    <li><span>Tuesday</span><span>9:00 AM - 9:00 PM</span></li>
+                                    <li><span>Wednesday</span><span>9:00 AM - 9:00 PM</span></li>
+                                    <li><span>Thursday</span><span>9:00 AM - 9:00 PM</span></li>
+                                    <li><span>Friday</span><span>9:00 AM - 9:00 PM</span></li>
+                                </ul>
+                            </div>
+                            
+                            <div class="hours-card">
+                                <h3 class="hours-title">Weekend</h3>
+                                <ul class="hours-list">
+                                    <li><span>Saturday</span><span>9:00 AM - 9:00 PM</span></li>
+                                    <li><span>Sunday</span><span>10:00 AM - 8:00 PM</span></li>
+                                </ul>
+                                <p style="margin-top: 16px; font-size: 0.9rem; opacity: 0.8;">
+                                    * Mall outlets may have extended hours
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-section">
+                        <h4>JMB Udaipur</h4>
+                        <p>Celebrating 60+ years of sweet traditions. From the royal city of Udaipur, bringing authentic Rajasthani flavors to your table.</p>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Quick Links</h4>
+                        <p><a href="index.html">Home</a></p>
+                        <p><a href="about.html">About Us</a></p>
+                        <p><a href="stores.html">Our Stores</a></p>
+                        <p><a href="contact.html">Contact</a></p>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Contact Info</h4>
+                        <p><i class="fas fa-phone"></i> +91 294 241 2345</p>
+                        <p><i class="fas fa-envelope"></i> orders@jmbudaipur.com</p>
+                        <p><i class="fas fa-map-marker-alt"></i> City Palace Road, Udaipur</p>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2024 JMB Udaipur. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Page transition
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(() => {
+                document.querySelector('.page-transition').classList.add('loaded');
+            }, 100);
+        });
+
+        // Store actions
+        document.querySelectorAll('.btn').forEach(button => {
+            button.addEventListener('click', function() {
+                if (this.textContent.includes('Get Directions')) {
+                    // In a real implementation, this would open maps
+                    alert('Opening directions in maps app...');
+                } else if (this.textContent.includes('Call Store')) {
+                    // In a real implementation, this would initiate a call
+                    alert('Calling store...');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

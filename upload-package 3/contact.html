@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - JMB Udaipur | Get in Touch</title>
+    <meta name="description" content="Contact JMB Udaipur for orders, inquiries, and support. Find our contact details, location, and send us a message.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/modern-style.css">
+    <link rel="stylesheet" href="css/contact-style.css">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="top-bar">
+            <div class="container">
+                <div class="top-bar-content">
+                    <div class="contact-info">
+                        <span><i class="fas fa-phone"></i> +91 294 241 2345</span>
+                        <span><i class="fas fa-envelope"></i> orders@jmbudaipur.com</span>
+                    </div>
+                    <div class="top-links">
+                        <a href="#track-order">Track Order</a>
+                        <a href="stores.html">Store Locator</a>
+                        <a href="#help">Help</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <nav class="main-nav">
+            <div class="container">
+                <div class="nav-content">
+                    <div class="logo">
+                        <a href="index.html">
+                            <div class="text-logo">
+                                <h1>JMB Udaipur</h1>
+                                <span class="tagline">Since 1960s</span>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <div class="nav-links">
+                        <a href="index.html" class="nav-link">Home</a>
+                        <a href="index.html#products" class="nav-link">Products</a>
+                        <a href="about.html" class="nav-link">About Us</a>
+                        <a href="stores.html" class="nav-link">Our Stores</a>
+                        <a href="contact.html" class="nav-link active">Contact</a>
+                    </div>
+                    
+                    <div class="nav-actions">
+                        <button class="account-btn"><i class="fas fa-user"></i></button>
+                        <button class="cart-btn" onclick="toggleCart()">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="cart-count" id="cartCount">0</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Page Hero -->
+    <section class="page-hero" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1423666639041-f56000c27a9a?w=1200') center/cover;">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Get in Touch</h1>
+                <p>We'd love to hear from you. Send us a message!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <div class="contact-grid">
+                <!-- Contact Form -->
+                <div class="contact-form-container">
+                    <h2>Send us a Message</h2>
+                    <p>Fill out the form below and we'll get back to you as soon as possible.</p>
+                    
+                    <form class="contact-form" id="contactForm" onsubmit="submitContactForm(event)">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">First Name *</label>
+                                <input type="text" id="firstName" name="firstName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name *</label>
+                                <input type="text" id="lastName" name="lastName" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Subject *</label>
+                            <select id="subject" name="subject" required>
+                                <option value="">Select a subject</option>
+                                <option value="general">General Inquiry</option>
+                                <option value="order">Order Support</option>
+                                <option value="bulk">Bulk Orders</option>
+                                <option value="corporate">Corporate Gifts</option>
+                                <option value="feedback">Feedback</option>
+                                <option value="complaint">Complaint</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message" rows="5" required placeholder="Tell us how we can help you..."></textarea>
+                        </div>
+                        
+                        <div class="form-group checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="subscribe" name="subscribe">
+                                <span class="checkmark"></span>
+                                Subscribe to our newsletter for updates and offers
+                            </label>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-block">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="contact-info-container">
+                    <h2>Contact Information</h2>
+                    <p>Reach out to us through any of these channels:</p>
+
+                    <div class="contact-methods">
+                        <div class="contact-method">
+                            <div class="method-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="method-details">
+                                <h3>Visit Our Store</h3>
+                                <p>City Palace Road, Near City Palace Main Gate<br>Udaipur, Rajasthan 313001</p>
+                                <a href="stores.html" class="method-link">View All Locations</a>
+                            </div>
+                        </div>
+
+                        <div class="contact-method">
+                            <div class="method-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="method-details">
+                                <h3>Call Us</h3>
+                                <p>+91 294 241 2345<br>Mon-Sat: 9:00 AM - 9:00 PM</p>
+                                <a href="tel:+912942412345" class="method-link">Call Now</a>
+                            </div>
+                        </div>
+
+                        <div class="contact-method">
+                            <div class="method-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="method-details">
+                                <h3>Email Us</h3>
+                                <p>orders@jmbudaipur.com<br>We'll respond within 24 hours</p>
+                                <a href="mailto:orders@jmbudaipur.com" class="method-link">Send Email</a>
+                            </div>
+                        </div>
+
+                        <div class="contact-method">
+                            <div class="method-icon">
+                                <i class="fab fa-whatsapp"></i>
+                            </div>
+                            <div class="method-details">
+                                <h3>WhatsApp</h3>
+                                <p>+91 94294 12345<br>Quick orders and support</p>
+                                <a href="https://wa.me/919429412345" class="method-link" target="_blank">Chat on WhatsApp</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Social Media -->
+                    <div class="social-section">
+                        <h3>Follow Us</h3>
+                        <div class="social-links-large">
+                            <a href="#" class="social-link facebook">
+                                <i class="fab fa-facebook-f"></i>
+                                <span>Facebook</span>
+                            </a>
+                            <a href="#" class="social-link instagram">
+                                <i class="fab fa-instagram"></i>
+                                <span>Instagram</span>
+                            </a>
+                            <a href="#" class="social-link youtube">
+                                <i class="fab fa-youtube"></i>
+                                <span>YouTube</span>
+                            </a>
+                            <a href="#" class="social-link twitter">
+                                <i class="fab fa-twitter"></i>
+                                <span>Twitter</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>What are your delivery areas?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We deliver pan-India through our online store. Local delivery is available within Udaipur city with free delivery for orders above ₹999.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>How do I track my order?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Once your order is shipped, you'll receive a tracking number via SMS and email. You can track your order on our website or contact our support team.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>What is your return policy?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Due to the nature of our food products, we don't accept returns. However, if you receive damaged or incorrect items, please contact us within 24 hours for a replacement.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>Do you offer bulk discounts?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! We offer special pricing for bulk orders, corporate gifts, and event catering. Contact us directly for custom quotes based on your requirements.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>How fresh are your products?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>All our sweets and namkeen are made fresh daily. We prepare orders based on demand to ensure maximum freshness when delivered.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <h3>What payment methods do you accept?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We accept UPI payments, credit/debit cards, net banking, and cash on delivery. Digital payments get additional discounts!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Contact CTA -->
+    <section class="quick-contact-cta">
+        <div class="container">
+            <h2>Need Immediate Assistance?</h2>
+            <p>Our customer support team is ready to help you</p>
+            <div class="cta-buttons">
+                <a href="tel:+912942412345" class="btn btn-primary">
+                    <i class="fas fa-phone"></i> Call Now
+                </a>
+                <a href="https://wa.me/919429412345" class="btn btn-whatsapp" target="_blank">
+                    <i class="fab fa-whatsapp"></i> WhatsApp Chat
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <h3>JMB Udaipur</h3>
+                        <p class="tagline">Celebrating 60+ Years of Sweet Traditions</p>
+                    </div>
+                    <p>From the royal city of Udaipur, we've been crafting premium traditional sweets and confectionery with authentic recipes passed down through generations.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="index.html#products">Products</a></li>
+                        <li><a href="stores.html">Our Stores</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Customer Care</h4>
+                    <ul>
+                        <li><a href="#help">Help Center</a></li>
+                        <li><a href="#track">Track Your Order</a></li>
+                        <li><a href="#returns">Returns & Refunds</a></li>
+                        <li><a href="#shipping">Shipping Info</a></li>
+                        <li><a href="#bulk">Bulk Orders</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>City Palace Road, Udaipur<br>Rajasthan 313001</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+91 294 241 2345</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>orders@jmbudaipur.com</span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2024 JMB Udaipur. All Rights Reserved.</p>
+                    <div class="footer-links">
+                        <a href="#privacy">Privacy Policy</a>
+                        <a href="#terms">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Shopping Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>Shopping Cart</h3>
+            <button class="cart-close" onclick="toggleCart()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-items" id="cartItems"></div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total: <strong id="cartTotal">₹0</strong></span>
+            </div>
+            <button class="btn btn-primary btn-block" onclick="proceedToCheckout()">
+                Proceed to Checkout
+            </button>
+            <button class="btn btn-whatsapp btn-block" onclick="orderViaWhatsApp()">
+                <i class="fab fa-whatsapp"></i> Order via WhatsApp
+            </button>
+        </div>
+    </div>
+
+    <!-- Cart Overlay -->
+    <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+
+    <!-- Scripts -->
+    <script src="js/modern-script.js"></script>
+    <script src="js/contact.js"></script>
+</body>
+</html>
