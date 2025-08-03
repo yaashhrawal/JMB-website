@@ -1,0 +1,418 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Premium Ghewar",
+      "name_hindi": "प्रीमियम घेवर",
+      "description": "Traditional Rajasthani sweet disc soaked in sugar syrup, topped with rabri and dry fruits. Made with pure desi ghee and finest flour.",
+      "price": 850,
+      "category": "sweets",
+      "subcategory": "traditional",
+      "image": "images/products/ghewar.jpg",
+      "images": [
+        "images/products/ghewar-1.jpg",
+        "images/products/ghewar-2.jpg",
+        "images/products/ghewar-3.jpg"
+      ],
+      "weight_options": ["500g", "1kg", "2kg"],
+      "default_weight": "1kg",
+      "ingredients": ["Refined flour", "Desi ghee", "Sugar", "Milk", "Cardamom", "Dry fruits"],
+      "shelf_life": "7 days",
+      "storage": "Store in cool, dry place",
+      "nutritional_info": {
+        "calories_per_100g": 450,
+        "fat": "18g",
+        "carbs": "65g",
+        "protein": "8g"
+      },
+      "allergens": ["Milk", "Nuts"],
+      "is_premium": true,
+      "is_featured": true,
+      "availability": "in_stock",
+      "rating": 4.8,
+      "review_count": 124
+    },
+    {
+      "id": 2,
+      "name": "Royal Kaju Katli",
+      "name_hindi": "रॉयल काजू कतली",
+      "description": "Diamond-shaped cashew fudge with edible silver leaf. A royal delicacy made with premium cashews and pure ghee.",
+      "price": 1200,
+      "category": "sweets",
+      "subcategory": "premium",
+      "image": "images/products/kaju-katli.jpg",
+      "images": [
+        "images/products/kaju-katli-1.jpg",
+        "images/products/kaju-katli-2.jpg",
+        "images/products/kaju-katli-3.jpg"
+      ],
+      "weight_options": ["250g", "500g", "1kg"],
+      "default_weight": "500g",
+      "ingredients": ["Cashews", "Sugar", "Ghee", "Silver leaf", "Cardamom"],
+      "shelf_life": "15 days",
+      "storage": "Store in airtight container",
+      "nutritional_info": {
+        "calories_per_100g": 520,
+        "fat": "28g",
+        "carbs": "45g",
+        "protein": "15g"
+      },
+      "allergens": ["Nuts"],
+      "is_premium": true,
+      "is_featured": true,
+      "availability": "in_stock",
+      "rating": 4.9,
+      "review_count": 89
+    },
+    {
+      "id": 3,
+      "name": "Special Namkeen Mix",
+      "name_hindi": "स्पेशल नमकीन मिक्स",
+      "description": "Crunchy blend of sev, peanuts, and traditional spices. Perfect tea-time snack with authentic Rajasthani flavors.",
+      "price": 450,
+      "category": "namkeen",
+      "subcategory": "mixed",
+      "image": "images/products/namkeen-mix.jpg",
+      "images": [
+        "images/products/namkeen-mix-1.jpg",
+        "images/products/namkeen-mix-2.jpg"
+      ],
+      "weight_options": ["500g", "1kg", "2kg"],
+      "default_weight": "1kg",
+      "ingredients": ["Gram flour", "Peanuts", "Spices", "Edible oil", "Salt"],
+      "shelf_life": "30 days",
+      "storage": "Store in airtight container",
+      "nutritional_info": {
+        "calories_per_100g": 480,
+        "fat": "32g",
+        "carbs": "35g",
+        "protein": "18g"
+      },
+      "allergens": ["Nuts"],
+      "is_premium": false,
+      "is_featured": true,
+      "availability": "in_stock",
+      "rating": 4.6,
+      "review_count": 156
+    },
+    {
+      "id": 4,
+      "name": "Gulab Jamun",
+      "name_hindi": "गुलाब जामुन",
+      "description": "Soft milk solid balls soaked in rose-flavored sugar syrup. Made fresh daily with pure khoya and aromatic cardamom.",
+      "price": 600,
+      "category": "sweets",
+      "subcategory": "traditional",
+      "image": "images/products/gulab-jamun.jpg",
+      "images": [
+        "images/products/gulab-jamun-1.jpg",
+        "images/products/gulab-jamun-2.jpg"
+      ],
+      "weight_options": ["500g", "1kg"],
+      "default_weight": "1kg",
+      "ingredients": ["Khoya", "Sugar", "Rose water", "Cardamom", "Ghee"],
+      "shelf_life": "5 days",
+      "storage": "Refrigerate after opening",
+      "nutritional_info": {
+        "calories_per_100g": 387,
+        "fat": "15g",
+        "carbs": "55g",
+        "protein": "10g"
+      },
+      "allergens": ["Milk"],
+      "is_premium": false,
+      "is_featured": true,
+      "availability": "in_stock",
+      "rating": 4.7,
+      "review_count": 203
+    },
+    {
+      "id": 5,
+      "name": "Premium Mathri",
+      "name_hindi": "प्रीमियम मठरी",
+      "description": "Crispy, flaky traditional snack perfect with tea. Made with refined flour, ghee, and aromatic spices using traditional methods.",
+      "price": 380,
+      "category": "namkeen",
+      "subcategory": "traditional",
+      "image": "images/products/mathri.jpg",
+      "images": [
+        "images/products/mathri-1.jpg",
+        "images/products/mathri-2.jpg"
+      ],
+      "weight_options": ["500g", "1kg"],
+      "default_weight": "1kg",
+      "ingredients": ["Refined flour", "Ghee", "Ajwain", "Black pepper", "Salt"],
+      "shelf_life": "20 days",
+      "storage": "Store in airtight container",
+      "nutritional_info": {
+        "calories_per_100g": 465,
+        "fat": "25g",
+        "carbs": "52g",
+        "protein": "12g"
+      },
+      "allergens": [],
+      "is_premium": true,
+      "is_featured": false,
+      "availability": "in_stock",
+      "rating": 4.5,
+      "review_count": 78
+    },
+    {
+      "id": 6,
+      "name": "Diwali Gift Hamper",
+      "name_hindi": "दिवाली गिफ्ट हैम्पर",
+      "description": "Curated collection of premium sweets, dry fruits, and namkeen. Beautifully packaged for festive gifting.",
+      "price": 2500,
+      "category": "gift-hampers",
+      "subcategory": "festival",
+      "image": "images/products/gift-hamper.jpg",
+      "images": [
+        "images/products/gift-hamper-1.jpg",
+        "images/products/gift-hamper-2.jpg",
+        "images/products/gift-hamper-3.jpg"
+      ],
+      "weight_options": ["2kg", "3kg", "5kg"],
+      "default_weight": "2.5kg",
+      "ingredients": ["Assorted sweets", "Premium dry fruits", "Namkeen varieties"],
+      "shelf_life": "Varies by item",
+      "storage": "Follow individual product storage",
+      "nutritional_info": {
+        "calories_per_100g": 450,
+        "fat": "22g",
+        "carbs": "48g",
+        "protein": "12g"
+      },
+      "allergens": ["Nuts", "Milk"],
+      "is_premium": true,
+      "is_featured": true,
+      "availability": "in_stock",
+      "rating": 4.9,
+      "review_count": 45
+    },
+    {
+      "id": 7,
+      "name": "Rasgulla",
+      "name_hindi": "रसगुल्ला",
+      "description": "Soft, spongy cottage cheese balls soaked in light sugar syrup. A Bengali delicacy perfected with our traditional touch.",
+      "price": 550,
+      "category": "sweets",
+      "subcategory": "traditional",
+      "image": "images/products/rasgulla.jpg",
+      "images": [
+        "images/products/rasgulla-1.jpg",
+        "images/products/rasgulla-2.jpg"
+      ],
+      "weight_options": ["500g", "1kg"],
+      "default_weight": "1kg",
+      "ingredients": ["Fresh paneer", "Sugar", "Water", "Cardamom"],
+      "shelf_life": "3 days",
+      "storage": "Refrigerate immediately",
+      "nutritional_info": {
+        "calories_per_100g": 186,
+        "fat": "4g",
+        "carbs": "30g",
+        "protein": "7g"
+      },
+      "allergens": ["Milk"],
+      "is_premium": false,
+      "is_featured": false,
+      "availability": "in_stock",
+      "rating": 4.4,
+      "review_count": 92
+    },
+    {
+      "id": 8,
+      "name": "Dry Fruit Kachori",
+      "name_hindi": "ड्राई फ्रूट कचौरी",
+      "description": "Crispy pastry filled with spiced dry fruits and nuts. A savory delight that melts in your mouth.",
+      "price": 650,
+      "category": "namkeen",
+      "subcategory": "premium",
+      "image": "images/products/dry-fruit-kachori.jpg",
+      "images": [
+        "images/products/dry-fruit-kachori-1.jpg",
+        "images/products/dry-fruit-kachori-2.jpg"
+      ],
+      "weight_options": ["500g", "1kg"],
+      "default_weight": "1kg",
+      "ingredients": ["Refined flour", "Almonds", "Cashews", "Raisins", "Spices", "Ghee"],
+      "shelf_life": "15 days",
+      "storage": "Store in airtight container",
+      "nutritional_info": {
+        "calories_per_100g": 520,
+        "fat": "30g",
+        "carbs": "45g",
+        "protein": "15g"
+      },
+      "allergens": ["Nuts"],
+      "is_premium": true,
+      "is_featured": false,
+      "availability": "in_stock",
+      "rating": 4.6,
+      "review_count": 67
+    },
+    {
+      "id": 9,
+      "name": "Malpua",
+      "name_hindi": "मालपुआ",
+      "description": "Sweet pancakes soaked in sugar syrup, garnished with pistachios. A festive delicacy that brings back childhood memories.",
+      "price": 480,
+      "category": "sweets",
+      "subcategory": "traditional",
+      "image": "images/products/malpua.jpg",
+      "images": [
+        "images/products/malpua-1.jpg",
+        "images/products/malpua-2.jpg"
+      ],
+      "weight_options": ["500g", "1kg"],
+      "default_weight": "1kg",
+      "ingredients": ["Refined flour", "Milk", "Sugar", "Ghee", "Cardamom", "Pistachios"],
+      "shelf_life": "4 days",
+      "storage": "Store in cool place",
+      "nutritional_info": {
+        "calories_per_100g": 420,
+        "fat": "18g",
+        "carbs": "58g",
+        "protein": "8g"
+      },
+      "allergens": ["Milk", "Nuts"],
+      "is_premium": false,
+      "is_featured": false,
+      "availability": "in_stock",
+      "rating": 4.3,
+      "review_count": 84
+    },
+    {
+      "id": 10,
+      "name": "Premium Bhujia",
+      "name_hindi": "प्रीमियम भुजिया",
+      "description": "Fine gram flour noodles seasoned with traditional spices. Crispy, aromatic, and irresistibly delicious.",
+      "price": 420,
+      "category": "namkeen",
+      "subcategory": "traditional",
+      "image": "images/products/bhujia.jpg",
+      "images": [
+        "images/products/bhujia-1.jpg",
+        "images/products/bhujia-2.jpg"
+      ],
+      "weight_options": ["500g", "1kg", "2kg"],
+      "default_weight": "1kg",
+      "ingredients": ["Gram flour", "Spices", "Edible oil", "Salt", "Asafoetida"],
+      "shelf_life": "25 days",
+      "storage": "Store in airtight container",
+      "nutritional_info": {
+        "calories_per_100g": 495,
+        "fat": "28g",
+        "carbs": "42g",
+        "protein": "20g"
+      },
+      "allergens": [],
+      "is_premium": true,
+      "is_featured": false,
+      "availability": "in_stock",
+      "rating": 4.5,
+      "review_count": 112
+    },
+    {
+      "id": 11,
+      "name": "Chocolate Burfi",
+      "name_hindi": "चॉकलेट बर्फी",
+      "description": "Modern twist on traditional burfi with rich chocolate flavor. Perfect blend of traditional techniques and contemporary taste.",
+      "price": 750,
+      "category": "sweets",
+      "subcategory": "modern",
+      "image": "images/products/chocolate-burfi.jpg",
+      "images": [
+        "images/products/chocolate-burfi-1.jpg",
+        "images/products/chocolate-burfi-2.jpg"
+      ],
+      "weight_options": ["500g", "1kg"],
+      "default_weight": "1kg",
+      "ingredients": ["Khoya", "Chocolate", "Sugar", "Ghee", "Vanilla"],
+      "shelf_life": "10 days",
+      "storage": "Store in cool place",
+      "nutritional_info": {
+        "calories_per_100g": 485,
+        "fat": "22g",
+        "carbs": "58g",
+        "protein": "10g"
+      },
+      "allergens": ["Milk"],
+      "is_premium": true,
+      "is_featured": false,
+      "availability": "in_stock",
+      "rating": 4.4,
+      "review_count": 56
+    },
+    {
+      "id": 12,
+      "name": "Wedding Gift Box",
+      "name_hindi": "वेडिंग गिफ्ट बॉक्स",
+      "description": "Elegant gift box with assorted premium sweets and dry fruits. Perfect for wedding celebrations and special occasions.",
+      "price": 3500,
+      "category": "gift-hampers",
+      "subcategory": "wedding",
+      "image": "images/products/wedding-gift-box.jpg",
+      "images": [
+        "images/products/wedding-gift-box-1.jpg",
+        "images/products/wedding-gift-box-2.jpg",
+        "images/products/wedding-gift-box-3.jpg"
+      ],
+      "weight_options": ["3kg", "4kg", "5kg"],
+      "default_weight": "4kg",
+      "ingredients": ["Premium sweets", "Dry fruits", "Silver work items"],
+      "shelf_life": "Varies by item",
+      "storage": "Follow individual product storage",
+      "nutritional_info": {
+        "calories_per_100g": 470,
+        "fat": "24g",
+        "carbs": "50g",
+        "protein": "13g"
+      },
+      "allergens": ["Nuts", "Milk"],
+      "is_premium": true,
+      "is_featured": true,
+      "availability": "in_stock",
+      "rating": 4.8,
+      "review_count": 32
+    }
+  ],
+  "categories": [
+    {
+      "id": "sweets",
+      "name": "Traditional Sweets",
+      "description": "Authentic Indian sweets made with traditional recipes",
+      "image": "images/categories/sweets.jpg"
+    },
+    {
+      "id": "namkeen",
+      "name": "Namkeen & Snacks",
+      "description": "Crispy and savory traditional snacks",
+      "image": "images/categories/namkeen.jpg"
+    },
+    {
+      "id": "bakery",
+      "name": "Bakery Items",
+      "description": "Fresh cakes, cookies, and pastries",
+      "image": "images/categories/bakery.jpg"
+    },
+    {
+      "id": "dry-fruits",
+      "name": "Dry Fruits & Nuts",
+      "description": "Premium quality dry fruits and nuts",
+      "image": "images/categories/dry-fruits.jpg"
+    },
+    {
+      "id": "gift-hampers",
+      "name": "Gift Hampers",
+      "description": "Curated collections for special occasions",
+      "image": "images/categories/gift-hampers.jpg"
+    },
+    {
+      "id": "festival-specials",
+      "name": "Festival Specials",
+      "description": "Special items for festivals and celebrations",
+      "image": "images/categories/festival-specials.jpg"
+    }
+  ]
+}

@@ -1,0 +1,368 @@
+/* =========================================
+   JMB Udaipur - Responsive Styles
+   Mobile-First Responsive Design
+   ========================================= */
+
+/* Tablet Styles (max-width: 768px) */
+@media (max-width: 768px) {
+    /* Typography */
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 2rem; }
+    h3 { font-size: 1.5rem; }
+    
+    /* Header & Navigation */
+    .mobile-menu-toggle {
+        display: flex;
+    }
+    
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        max-width: 300px;
+        height: 100vh;
+        background: linear-gradient(135deg, var(--color-burgundy) 0%, var(--color-gold) 100%);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: var(--spacing-xxl) var(--spacing-lg) var(--spacing-lg);
+        transition: right var(--transition-medium);
+        overflow-y: auto;
+        box-shadow: -5px 0 20px rgba(0, 0, 0, 0.3);
+    }
+    
+    .nav-menu.active {
+        right: 0;
+    }
+    
+    .nav-link {
+        font-size: 1.2rem;
+        padding: var(--spacing-sm) 0;
+    }
+    
+    .dropdown-menu {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        margin-top: 0;
+        margin-left: var(--spacing-md);
+        box-shadow: none;
+        background: rgba(245, 245, 220, 0.1);
+    }
+    
+    /* Hero Section */
+    .hero {
+        min-height: 70vh;
+    }
+    
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .hero-description {
+        font-size: 1rem;
+    }
+    
+    .hero-cta {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .heritage-stats {
+        gap: var(--spacing-md);
+    }
+    
+    .stat-item {
+        min-width: 120px;
+        padding: var(--spacing-sm) var(--spacing-md);
+    }
+    
+    .stat-number {
+        font-size: 2rem;
+    }
+    
+    /* Product Grid */
+    .product-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: var(--spacing-md);
+    }
+    
+    /* Categories */
+    .category-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-md);
+    }
+    
+    /* Heritage Story */
+    .story-content {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+    
+    .story-image {
+        order: -1;
+    }
+    
+    /* Testimonials */
+    .testimonial-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Footer */
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+    
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .footer-links-bottom {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    /* Cart Sidebar */
+    .cart-sidebar {
+        width: 100%;
+        right: -100%;
+    }
+}
+
+/* Mobile Styles (max-width: 480px) */
+@media (max-width: 480px) {
+    /* Base */
+    html {
+        font-size: 14px;
+    }
+    
+    .container {
+        padding: 0 var(--spacing-sm);
+    }
+    
+    section {
+        padding: var(--spacing-xl) 0;
+    }
+    
+    /* Typography */
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.75rem; }
+    h3 { font-size: 1.5rem; }
+    
+    /* Header */
+    .logo {
+        font-size: 1.5rem;
+    }
+    
+    .heritage-badge {
+        font-size: 0.7rem;
+        padding: 3px 8px;
+    }
+    
+    /* Hero */
+    .hero {
+        min-height: 60vh;
+    }
+    
+    .hero-title {
+        font-size: 2rem;
+        margin-bottom: var(--spacing-sm);
+    }
+    
+    .hero-subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .hero-description {
+        font-size: 0.95rem;
+    }
+    
+    .heritage-stats {
+        flex-direction: column;
+        align-items: center;
+        gap: var(--spacing-sm);
+    }
+    
+    /* Buttons */
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+    
+    /* Product Grid */
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .product-image {
+        height: 200px;
+    }
+    
+    .product-content {
+        padding: var(--spacing-md);
+    }
+    
+    .product-title {
+        font-size: 1.2rem;
+    }
+    
+    .product-actions {
+        flex-direction: column;
+    }
+    
+    .btn-whatsapp {
+        width: 100%;
+    }
+    
+    /* Categories */
+    .category-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .category-image {
+        height: 150px;
+    }
+    
+    /* Timeline */
+    .timeline-item {
+        padding-left: var(--spacing-lg);
+    }
+    
+    /* Newsletter */
+    .newsletter-form {
+        flex-direction: column;
+        gap: var(--spacing-xs);
+    }
+    
+    .newsletter-form input,
+    .newsletter-form button {
+        width: 100%;
+        border-radius: 25px;
+    }
+}
+
+/* Large Desktop Styles (min-width: 1400px) */
+@media (min-width: 1400px) {
+    .container {
+        max-width: 1320px;
+    }
+    
+    .product-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .category-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .testimonial-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Print Styles */
+@media print {
+    /* Hide unnecessary elements */
+    .header,
+    .footer,
+    .cart-sidebar,
+    .cart-overlay,
+    .btn,
+    .social-links,
+    .newsletter-form {
+        display: none !important;
+    }
+    
+    /* Adjust colors for print */
+    body {
+        color: #000;
+        background: #fff;
+    }
+    
+    a {
+        color: #000;
+        text-decoration: underline;
+    }
+    
+    /* Ensure images print */
+    img {
+        max-width: 100%;
+        page-break-inside: avoid;
+    }
+    
+    /* Page breaks */
+    section {
+        page-break-inside: avoid;
+    }
+}
+
+/* Hover Effects - Disable on Touch Devices */
+@media (hover: none) {
+    .nav-link:hover::after {
+        width: 0;
+    }
+    
+    .product-card:hover {
+        transform: none;
+    }
+    
+    .product-card:hover .product-image img {
+        transform: none;
+    }
+    
+    .category-card:hover {
+        transform: none;
+    }
+    
+    .category-card:hover .category-image img {
+        transform: none;
+    }
+}
+
+/* Accessibility - Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --color-white: #1a1a1a;
+        --color-dark: #f0f0f0;
+        --bg-light: #2a2a2a;
+        --bg-cream: #252525;
+    }
+    
+    body {
+        background-color: #1a1a1a;
+        color: #f0f0f0;
+    }
+    
+    .product-card,
+    .category-card,
+    .testimonial-card {
+        background: #2a2a2a;
+    }
+    
+    .dropdown-menu {
+        background: #2a2a2a;
+    }
+    
+    .cart-sidebar {
+        background: #2a2a2a;
+    }
+}

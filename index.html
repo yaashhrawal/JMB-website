@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JMB Udaipur - Premium Traditional Sweets & Namkeen | 60+ Years of Authentic Taste</title>
+    <meta name="description" content="Shop premium traditional Indian sweets, namkeen, and confectionery from JMB Udaipur. 60+ years of authentic recipes. Free shipping across India. Order now!">
+    <meta name="keywords" content="JMB Udaipur, traditional sweets, namkeen, Indian mithai, premium confectionery, online sweets delivery, authentic taste, Rajasthani sweets">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="JMB Udaipur - Premium Traditional Sweets & Namkeen">
+    <meta property="og:description" content="60+ years of authentic taste. Premium sweets, namkeen & confectionery delivered nationwide.">
+    <meta property="og:type" content="website">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/modern-style.css">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="top-bar">
+            <div class="container">
+                <div class="top-bar-content">
+                    <div class="contact-info">
+                        <span><i class="fas fa-phone"></i> +91 294 241 2345</span>
+                        <span><i class="fas fa-envelope"></i> orders@jmbudaipur.com</span>
+                    </div>
+                    <div class="top-links">
+                        <a href="#track-order">Track Order</a>
+                        <a href="#store-locator">Store Locator</a>
+                        <a href="#help">Help</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <nav class="main-nav">
+            <div class="container">
+                <div class="nav-content">
+                    <div class="logo">
+                        <img src="images/jmb-logo.png" alt="JMB Udaipur" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div class="text-logo" style="display: none;">
+                            <h1>JMB Udaipur</h1>
+                            <span class="tagline">Since 1960s</span>
+                        </div>
+                    </div>
+                    
+                    <div class="nav-links">
+                        <a href="#home" class="nav-link active">Home</a>
+                        <div class="dropdown">
+                            <a href="#products" class="nav-link">Products <i class="fas fa-chevron-down"></i></a>
+                            <div class="dropdown-menu">
+                                <div class="mega-menu">
+                                    <div class="menu-section">
+                                        <h4>Traditional Sweets</h4>
+                                        <a href="#ghewar">Ghewar</a>
+                                        <a href="#gulab-jamun">Gulab Jamun</a>
+                                        <a href="#kaju-katli">Kaju Katli</a>
+                                        <a href="#rasgulla">Rasgulla</a>
+                                        <a href="#barfi">Barfi Varieties</a>
+                                    </div>
+                                    <div class="menu-section">
+                                        <h4>Namkeen & Snacks</h4>
+                                        <a href="#mixtures">Mixtures</a>
+                                        <a href="#mathri">Mathri</a>
+                                        <a href="#bhujia">Bhujia</a>
+                                        <a href="#chivda">Chivda</a>
+                                        <a href="#crackers">Crackers</a>
+                                    </div>
+                                    <div class="menu-section">
+                                        <h4>Bakery Items</h4>
+                                        <a href="#cakes">Fresh Cakes</a>
+                                        <a href="#cookies">Cookies</a>
+                                        <a href="#pastries">Pastries</a>
+                                        <a href="#breads">Breads</a>
+                                    </div>
+                                    <div class="menu-section">
+                                        <h4>Gift Hampers</h4>
+                                        <a href="#diwali">Diwali Special</a>
+                                        <a href="#wedding">Wedding Packs</a>
+                                        <a href="#corporate">Corporate Gifts</a>
+                                        <a href="#custom">Custom Hampers</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#about" class="nav-link">About Us</a>
+                        <a href="#stores" class="nav-link">Our Stores</a>
+                        <a href="#contact" class="nav-link">Contact</a>
+                    </div>
+                    
+                    <div class="nav-actions">
+                        <div class="search-box">
+                            <input type="text" placeholder="Search products..." id="searchInput">
+                            <button type="button"><i class="fas fa-search"></i></button>
+                        </div>
+                        <button class="account-btn"><i class="fas fa-user"></i></button>
+                        <button class="cart-btn" onclick="toggleCart()">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="cart-count" id="cartCount">0</span>
+                        </button>
+                        <button class="mobile-menu-btn">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-slider">
+            <div class="hero-slide active">
+                <div class="container">
+                    <div class="hero-content">
+                        <h1>Celebrating 60+ Years of<br><span class="highlight">Sweet Traditions</span></h1>
+                        <p>Premium traditional Indian sweets, namkeen & confectionery delivered fresh to your doorstep. Authentic recipes passed down through generations, crafted with the finest ingredients from the royal city of Udaipur.</p>
+                        <div class="hero-buttons">
+                            <a href="#products" class="btn btn-primary">Shop Now</a>
+                            <a href="#about" class="btn btn-secondary">Our Story</a>
+                        </div>
+                        <div class="trust-badges">
+                            <div class="badge">
+                                <i class="fas fa-truck"></i>
+                                <span>Free Delivery<br>Above ₹999</span>
+                            </div>
+                            <div class="badge">
+                                <i class="fas fa-award"></i>
+                                <span>Premium<br>Quality</span>
+                            </div>
+                            <div class="badge">
+                                <i class="fas fa-clock"></i>
+                                <span>Fresh<br>Daily</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Category Section -->
+    <section class="category-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Shop by Category</h2>
+                <p>Discover our wide range of premium products, each crafted with traditional techniques and the finest ingredients</p>
+            </div>
+            <div class="category-grid">
+                <div class="category-card">
+                    <div class="category-image">
+                        <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                             alt="Traditional Indian Sweets - Elegant presentation of gulab jamun and rasgulla"
+                             style="filter: sepia(10%) saturate(120%) brightness(110%) contrast(105%);">
+                        <div class="premium-badge">Premium</div>
+                    </div>
+                    <div class="category-info">
+                        <h3>Traditional Sweets</h3>
+                        <p>Handcrafted delicacies using time-honored recipes. From royal gulab jamuns to delicate rasgullas, each sweet tells a story of Udaipur's culinary heritage.</p>
+                        <a href="#sweets" class="category-btn">Explore <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="category-card">
+                    <div class="category-image">
+                        <img src="https://images.unsplash.com/photo-1599490659213-e2b9527bd087?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                             alt="Traditional Namkeen and Snacks collection"
+                             style="filter: sepia(5%) saturate(115%) brightness(108%) contrast(110%);">
+                        <div class="premium-badge">Authentic</div>
+                    </div>
+                    <div class="category-info">
+                        <h3>Namkeen & Snacks</h3>
+                        <p>Crispy, flavorful traditional snacks made with premium ingredients. Perfect for tea-time or gifting, our namkeen brings authentic Rajasthani flavors to your table.</p>
+                        <a href="#namkeen" class="category-btn">Explore <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="category-card">
+                    <div class="category-image">
+                        <img src="https://images.unsplash.com/photo-1519915028121-7d3463d20b13?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                             alt="Fresh bakery items and pastries"
+                             style="filter: sepia(8%) saturate(110%) brightness(112%) contrast(108%);">
+                        <div class="premium-badge">Fresh Daily</div>
+                    </div>
+                    <div class="category-info">
+                        <h3>Fresh Bakery</h3>
+                        <p>Artisanal cakes, pastries, and baked goods prepared fresh daily. Combining traditional techniques with modern flavors for every celebration.</p>
+                        <a href="#bakery" class="category-btn">Explore <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="category-card">
+                    <div class="category-image">
+                        <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                             alt="Luxury gift hampers and curated collections"
+                             style="filter: sepia(12%) saturate(125%) brightness(115%) contrast(112%);">
+                        <div class="premium-badge">Curated</div>
+                    </div>
+                    <div class="category-info">
+                        <h3>Luxury Gift Hampers</h3>
+                        <p>Thoughtfully curated collections perfect for festivals, celebrations, and corporate gifting. Each hamper tells a story of tradition and taste.</p>
+                        <a href="#gifts" class="category-btn">Explore <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="featured-products">
+        <div class="container">
+            <div class="section-header">
+                <h2>Featured Products</h2>
+                <p>Our most popular items loved by customers across India, representing the finest of Udaipur's culinary heritage</p>
+            </div>
+            <div class="product-grid" id="featuredProducts">
+                <!-- Products will be loaded dynamically -->
+            </div>
+            <div class="text-center">
+                <a href="#all-products" class="btn btn-outline">View All Products</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="why-choose-us">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Choose JMB Udaipur?</h2>
+                <p>Trust built over 60+ years of excellence, serving authentic Rajasthani flavors with uncompromising quality</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-history"></i>
+                    </div>
+                    <h3>60+ Years Heritage</h3>
+                    <p>Traditional recipes passed down through generations since 1960s</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>Premium Quality</h3>
+                    <p>Finest ingredients sourced directly from trusted suppliers</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shipping-fast"></i>
+                    </div>
+                    <h3>Fresh Delivery</h3>
+                    <p>Made fresh daily and delivered with care across India</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3>Authentic Taste</h3>
+                    <p>Original Rajasthani flavors that define true tradition</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customer Reviews -->
+    <section class="reviews-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>What Our Customers Say</h2>
+                <p>Over 10,000+ happy families trust us to deliver authentic taste and premium quality every time</p>
+            </div>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="review-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"The ghewar from JMB is absolutely divine! Tastes exactly like my grandmother used to make. Quality is unmatched!"</p>
+                    <div class="reviewer">
+                        <strong>Priya Sharma</strong>
+                        <span>Mumbai</span>
+                    </div>
+                </div>
+                <div class="review-card">
+                    <div class="review-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"We order from JMB for all our celebrations. Their gift hampers are beautifully packaged and always fresh."</p>
+                    <div class="reviewer">
+                        <strong>Rajesh Mehta</strong>
+                        <span>Delhi</span>
+                    </div>
+                </div>
+                <div class="review-card">
+                    <div class="review-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"Authentic Rajasthani taste! The namkeen varieties are crispy and flavorful. Ordering is so convenient."</p>
+                    <div class="reviewer">
+                        <strong>Anita Jain</strong>
+                        <span>Jaipur</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter-section">
+        <div class="container">
+            <div class="newsletter-content">
+                <h2>Stay Updated</h2>
+                <p>Get exclusive offers, new product launches & traditional recipes delivered to your inbox</p>
+                <form class="newsletter-form" onsubmit="subscribeNewsletter(event)">
+                    <input type="email" placeholder="Enter your email address" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <h3>JMB Udaipur</h3>
+                        <p class="tagline">Celebrating 60+ Years of Sweet Traditions</p>
+                    </div>
+                    <p>From the royal city of Udaipur, we've been crafting premium traditional sweets and confectionery with authentic recipes passed down through generations.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Products</h4>
+                    <ul>
+                        <li><a href="#sweets">Traditional Sweets</a></li>
+                        <li><a href="#namkeen">Namkeen & Snacks</a></li>
+                        <li><a href="#bakery">Fresh Bakery</a></li>
+                        <li><a href="#gifts">Gift Hampers</a></li>
+                        <li><a href="#seasonal">Seasonal Specials</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Customer Care</h4>
+                    <ul>
+                        <li><a href="#help">Help Center</a></li>
+                        <li><a href="#track">Track Your Order</a></li>
+                        <li><a href="#returns">Returns & Refunds</a></li>
+                        <li><a href="#shipping">Shipping Info</a></li>
+                        <li><a href="#bulk">Bulk Orders</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>City Palace Road, Udaipur<br>Rajasthan 313001</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+91 294 241 2345</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>orders@jmbudaipur.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <span>Mon-Sat: 9AM-9PM<br>Sun: 10AM-8PM</span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2024 JMB Udaipur. All Rights Reserved.</p>
+                    <div class="footer-links">
+                        <a href="#privacy">Privacy Policy</a>
+                        <a href="#terms">Terms of Service</a>
+                        <a href="#cookies">Cookie Policy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Shopping Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>Shopping Cart</h3>
+            <button class="cart-close" onclick="toggleCart()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <!-- Cart items will be loaded here -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total: <strong id="cartTotal">₹0</strong></span>
+            </div>
+            <button class="btn btn-primary btn-block" onclick="proceedToCheckout()">
+                Proceed to Checkout
+            </button>
+            <button class="btn btn-whatsapp btn-block" onclick="orderViaWhatsApp()">
+                <i class="fab fa-whatsapp"></i> Order via WhatsApp
+            </button>
+        </div>
+    </div>
+
+    <!-- Cart Overlay -->
+    <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+
+    <!-- Scripts -->
+    <script src="js/modern-script.js"></script>
+</body>
+</html>
